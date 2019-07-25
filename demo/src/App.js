@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route,Redirect,Switch,NavLink,withRouter} from "react-router-dom"
+import { BrowserRouter as Router, Route, Redirect, Switch, NavLink, withRouter } from "react-router-dom"
 import Footer from "./views/footer"
 import Classify from "./views/layer/classify/classify"
 import Home from "./views/layer/home/home"
@@ -11,17 +11,17 @@ class App extends Component {
   render() {
     return (
       <div>
-       <Router>
-                <Footer></Footer>
+        <Router>
 
-                <Route path="/header/login" component={Login}></Route>
-                <Route path="/header/home" component={Home}></Route>
-                <Route path="/header/special" component={Special}></Route>
-                <Route path="/header/classify" component={Classify}></Route>
-                <Route path="/header/shoppingCart" component={ShoppingCart}></Route>
-                <Route path="/header/mine" component={Mine}></Route> 
-       </Router>
-        
+          <Route path="/header/login" component={Login}></Route>
+          <Route path="/header/home" component={Home}></Route>
+          <Route path="/header/special" component={Special}></Route>
+          <Route path="/header/classify" component={Classify}></Route>
+          <Route path="/header/shoppingCart" component={ShoppingCart}></Route>
+          <Route path="/header/mine" component={Mine}></Route>
+          <Footer></Footer>
+        </Router>
+
       </div>
     )
   }

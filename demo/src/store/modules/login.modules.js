@@ -1,6 +1,6 @@
 import { observable, action } from "mobx";
 
-export default class Home{
+export default class Login{
     // // @observable 修饰属性
     // @observable count = 1000;
 
