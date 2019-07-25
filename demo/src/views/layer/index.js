@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import Footer from "../component/footer"
 import RouterView from "../../router/routerView";
-console.log(RouterView)
+import style from "./index.module.scss"
 export class index extends Component {
     render() {
         return (
             <div>
-                <RouterView router={this.props.child}></RouterView>
+                <div className={style.center}>
+                   <RouterView router={this.props.child}></RouterView>
+                </div>
+               
                 <Footer></Footer>
             </div>
         )

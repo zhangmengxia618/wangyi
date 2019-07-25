@@ -1,62 +1,32 @@
 import React, { Component } from 'react'
-import {inject, observer} from 'mobx-react';
-import styles from './login.scss';
-import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
-
-export class login extends Component {
+import styles from './login.module.scss';
+import {inject,observer} from "mobx-react"
+import { setCookie, getCookie } from "../../utils/index";
+@inject('login')
+@observer
+ class Login extends Component {
     render() {
-        const { getFieldDecorator } = this.props.form;
-    return (
-      <Form onSubmit={this.handleSubmit} className="login-form">
-        <Form.Item>
-          {getFieldDecorator('username', {
-            rules: [{ required: true, message: 'Please input your username!' }],
-          })(
-            <Input
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="Username"
-            />,
-          )}
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please input your Password!' }],
-          })(
-            <Input
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              type="password"
-              placeholder="Password"
-            />,
-          )}
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('remember', {
-            valuePropName: 'checked',
-            initialValue: true,
-          })(<Checkbox>Remember me</Checkbox>)}
-          <a className="login-form-forgot" href="">
-            Forgot password
-          </a>
-          <Button type="primary" htmlType="submit" className="login-form-button">
-            Log in
-          </Button>
-          Or <a href="">register now!</a>
-        </Form.Item>
-      </Form>
-    );
+      console.log(this.props.login.data)
+      return (
+          <div className={styles.login}>
+             <p><img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt=""/></p>
+             <input type="text" placeholder="请输入手机号码" value={this.props.login.name} onChange={(e)=>{this.props.login.changeName(e.target.value)}}/>
+             <input type="password" placeholder="请输入登录密码" value={this.props.login.paw} onChange={(e)=>{this.props.login.changePaw(e.target.value)}}/>
+             <button onClick={()=>{this.props.login.changeBtn(this.props.login.name,this.props.login.paw)}}>登录</button>
+          </div>
+        );
     }
-      //处理表单提交
-   handleSubmit = (e) => {
-    // e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        this.props.login({ user_name: values.username, user_pwd: values.password })
-
-      }
-    });
-  }
-   
-
+    componentDidUpdate(){
+       if(this.props.login.data===0){
+         this.props.history.push('/')
+         console.log(this.props)
+         if(this.props.location.pathname.indexOf('/login')===-1){
+              if(!getCookie()){
+                     console.log(12)
+              }
+         }
+       }
+    }
 }
 
-export default Form.create(login)
+export default Login

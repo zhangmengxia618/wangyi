@@ -1,0 +1,13 @@
+.homelist {
+  width: 100%;
+  height: 1rem;
+  background: #fff;
+  display: flex;
+  margin-top: 0.2rem;
+}
+
+.homelist li {
+  width: 20%;
+  list-style: none;
+  text-align: center;
+}
