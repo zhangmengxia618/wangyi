@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route,Redirect,Switch,NavLink,withRouter} from "react-router-dom"
-import Headers from "./views/header"
-import Classify from "./views/classify/classify"
-import Home from "./views/home/home"
-import Mine from "./views/mine/mine"
-import ShoppingCart from "./views//shoppingCart/shoppingCart"
-import Special from "./views/special/special"
+import Footer from "./views/footer"
+import Classify from "./views/layer/classify/classify"
+import Home from "./views/layer/home/home"
+import Mine from "./views/layer/mine/mine"
+import ShoppingCart from "./views/layer/shoppingCart/shoppingCart"
+import Special from "./views/layer/special/special"
+import Login from "./views/login/login"
 class App extends Component {
   render() {
     return (
       <div>
        <Router>
-                <Headers></Headers>
+                <Footer></Footer>
+
+                <Route path="/header/login" component={Login}></Route>
                 <Route path="/header/home" component={Home}></Route>
                 <Route path="/header/special" component={Special}></Route>
                 <Route path="/header/classify" component={Classify}></Route>
