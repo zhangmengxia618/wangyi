@@ -19,7 +19,32 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>网易严选</title>
+    <script>
+      // 计算rem移动自适应问题。
+      var fun = function (doc, win) {
+      var docEl = doc.documentElement,
+      // orientationchange 横屏竖屏  resize：font-size大小
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+            //这里是假设在750px宽度设计稿的情况下，1rem = 100px；
+            //可以根据实际需要修改
+            docEl.style.fontSize = (clientWidth / 750) * 16 + 'px';
+          };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+      }
+      fun(document, window);
+    </script>
+    <!-- 两种方式解决rem宽度自适应问题script方式更为常见 -->
+     <style>
+      /* html{
+        font-size: calc(100/750*100vw);
+      } */
+      </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
