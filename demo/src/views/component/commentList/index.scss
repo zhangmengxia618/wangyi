@@ -1,0 +1,56 @@
+.commentList{
+    background: white;
+  .commentItem:last-child{
+    &:after{
+      width: 0;
+      height: 0;
+    }
+  }
+  .commentItem{
+    width: 99%;
+    height: auto;
+    position: relative;
+    background: white;
+    color: gray;
+    padding-bottom: .05rem;
+    &:after{
+      content: '';
+      width: 200%;
+      height: 1px;
+      position: absolute;
+      bottom: 0;
+      transform: scale(0.5);
+      transform-origin: 0;
+      background-color: gray;
+    }
+    .userInfo{
+      height: .4rem;
+      line-height: .4rem;
+      font-size: .8rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      div:nth-child(1){
+        flex: 1;
+        color: black;
+      }
+      div:nth-child(2){
+        width: auto;
+      }
+    }
+    .userComment{
+      line-height: .3rem;
+      font-size: .16rem;
+    }
+    .commentPicList{
+      display: flex;
+      img{
+        display: block;
+        width: 100px;
+        height: 100px;
+        box-sizing: content-box;
+        margin-right: .1rem;
+      }
+    }
+  }
+}

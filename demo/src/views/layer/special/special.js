@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import {inject,observer} from "mobx-react"
+import style from "./special.module.scss"
 @inject('special')
 @observer
 class Special extends Component {
     componentDidMount(){
         this.props.special.specialD()
-        // console.log(this.props.special.specialD)
     }
     render() {
         console.log(this.props.special.specialData)
@@ -13,18 +13,21 @@ class Special extends Component {
             <div>
                 {
                  this.props.special.specialData&&this.props.special.specialData.map((item,index)=>{
-                     console.log(item.subtitle)
+                    //  console.log(item)
                      return (
-                        <dl>
-                            <dt>
-                               <img src={item.scene_pic_url} alt=""/>
-                            </dt>
-                            <dd>
-                                <h2>{item.title}</h2>
-                                <p>{item.subtitle}</p>
-                                <h3>{item.price_info}</h3>
-                            </dd>
-                        </dl>
+                        <a href={`/SpecialDetail/${item.id}`} className={style.a}>
+                             <dl className={style.special} >
+                                <dt>
+                                <img src={item.scene_pic_url} alt=""/>
+                                </dt>
+                                <dd>
+                                    <h2>{item.title}</h2>
+                                    <p>{item.subtitle}</p>
+                                    <h3>{item.price_info}元起</h3>
+                                </dd>
+                            </dl>
+                        </a>
+                       
                      )
                  })   
                 }

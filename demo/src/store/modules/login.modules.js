@@ -12,6 +12,7 @@ export default class Login{
     @action changeName(type){
         this.name=type;
     }
+    
     @action changePaw(type){
         this.paw=type;
     }

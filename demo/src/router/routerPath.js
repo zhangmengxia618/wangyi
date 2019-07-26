@@ -34,6 +34,22 @@ const Special=Loadable({
     loader:()=>import('../views/layer/special/special'),
     loading:Loading
 })
+const SpecialDetail=Loadable({
+    loader:()=>import('../views/layer/special/specialDetail/specialDetail'),
+    loading:Loading
+})
+
+const SpecialList=Loadable({
+    loader:()=>import('../views/layer/special/SpecialList/SpecialList'),
+    loading:Loading
+})
+const Comment=Loadable({
+    loader:()=>import('../views/layer/special/comment/comment'),
+    loading:Loading
+})
+
+
+
 
 let router=[
     {
@@ -71,6 +87,15 @@ let router=[
     },{
         path:"/login",
         component:Login
+    },{
+        path:"/SpecialDetail/:id",
+        component:SpecialDetail
+    },{
+        path:"/SpecialList/:id",
+        component:SpecialList
+    },{
+        path:"/Comment/:id",
+        component:Comment
     },
 ]
 
