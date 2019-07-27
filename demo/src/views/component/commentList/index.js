@@ -2,7 +2,6 @@ import React, {Component, Fragment} from 'react'
 import './index.scss'
 class CommentList extends Component{
   render () {
-    // console.log(this.props)
     const { commentList} = this.props
     return (
       <Fragment>
@@ -17,9 +16,9 @@ class CommentList extends Component{
                 <div className="userComment">{item.content}</div>
                 <div className="commentPicList">
                     {
-                        item.pic_list.map((item) => {
-                            return <img src={item.pic_url} key={item.id} alt={item.id}/>
-                        })
+                      item.pic_list.map((item) => {
+                          return <img src={item.pic_url} key={item.id} alt={item.id}/>
+                      })
                     }
                 </div>
               </div>

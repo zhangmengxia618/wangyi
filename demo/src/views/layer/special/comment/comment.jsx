@@ -18,7 +18,7 @@ class Comment extends Component {
                 </div>
                <textarea rows="10" cols="30" value={this.props.special.nameCom} onChange={(e)=>{this.props.special.changenameCom(e.target.value)}}/>
                <div className={style.btnBox}>
-                    <button>清空</button>
+                    <button onClick={()=>{this.props.special.specialPostclear()}} className={this.props.special.nameCom.length>1?style.clean:style.cleanNone}>清空</button>
                     <a href={`/SpecialDetail/${id}`}>
                         <button onClick={()=>{this.props.special.specialPostData(this.props.special.nameCom,1,this.props.match.params.id)}}>确定</button>
                     </a>

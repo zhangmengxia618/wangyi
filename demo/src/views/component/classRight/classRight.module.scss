@@ -1,0 +1,32 @@
+.classRight{
+    width: 69%;
+    height: 100%;
+    .images{
+        width: 100%;
+        height: 1rem;
+        background: #f90;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    h2{
+        font-weight: normal;
+        text-align: center;
+        color: rgb(16, 142, 255);
+        line-height: 0.3rem;
+    }
+    .classRBox{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        dl{
+            width: 50%;
+            text-align: center;
+            // background: blue;
+
+        }
+    }
+}

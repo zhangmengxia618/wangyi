@@ -43,52 +43,20 @@ export default class Login{
             this.specialRelData=res.data
         })
     }
-
-     //添加评论数据
-    //  @action specialPostData(id){
-    //     specialPost({id:id}).then(res=>{
-    //         console.log(res)
-    //  })
-    //     // specialRelated(id).then(res=>{
-    //     //     this.specialRelData=res.data
-    //     // })
-    // }
-
+    //初始评论
     @action changenameCom(type){
         console.log(type)
         this.nameCom=type;
     }
-
+     //添加评论数据
     @action specialPostData(content,typeId,valueId){
         let obj={content,typeId:1,valueId:valueId*1}
         console.log(obj)
         specialPost(obj).then(res=>{
-            console.log(res)
-            // content:content,add_time:new Date().toLocaleString(),
-            // const obj={valueId,typeId,size:this.specialListCount,page:1}
-            // console.log(valueId)
-            // specialList(obj).then(res=>{
-            //     // content: "很不错", type_id: 1, value_id: 313, id: 1005, add_time: "2017-07-29 23:47:32",
-            //     // let comen={content:content,add_time:new Date().toLocaleString(),type_id: 1, value_id: valueId*1,}
-            //     console.log(res)
-            //     // this.specialListData.push(comen);
-            //     // this.specialListData=res.data.data;
-            //     // console.log(this.specialListData)
-            // })
-            // this.specialListData=this.specialListData.push(objCen);
-            // console.log()
            alert(res.data)
-        // if(res.errno===0){
-        //     setCookie(res.data.sessionKey)
-        //     this.data=res.errno
-        // }else{
-        //     this.data=res.errno
-        // }
-        //    this.btnLogin=res.data
        })
-        // this.paw=type;
     }
-  
-
-
+    @action specialPostclear(){
+        this.nameCom=' ';
+    }
 }

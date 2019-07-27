@@ -18,8 +18,11 @@ export default class Login{
     }
     @action changeBtn(mobile,password){
         let obj={mobile,password}
+        console.log(obj)
        logins(obj).then(res=>{
+        console.log(res)
         if(res.errno===0){
+            console.log(res.data.sessionKey)
             setCookie(res.data.sessionKey)
             this.data=res.errno
         }else{

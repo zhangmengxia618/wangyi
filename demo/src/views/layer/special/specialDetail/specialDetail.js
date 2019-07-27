@@ -1,7 +1,7 @@
 import React, { Component,Fragment } from 'react'
 import {inject,observer} from "mobx-react"
 import { Icon } from 'antd';
-import { BrowserRouter as Router, Route,Redirect,Switch,NavLink,withRouter} from "react-router-dom"
+import { BrowserRouter as Router,NavLink} from "react-router-dom"
 import style from "./specialDetail.module.scss"
 //引用评论组件
 import CommentList from "../../../component/commentList/index"
@@ -45,7 +45,6 @@ import CommentList from "../../../component/commentList/index"
                     </Fragment>:
                         <div className={style.noComment}>
                         <div className={style.noCommentIcon}>
-                            {/* <img src={commentPng} alt=""/> */}
                             <div>等你来留言</div>
                         </div>
                         </div>

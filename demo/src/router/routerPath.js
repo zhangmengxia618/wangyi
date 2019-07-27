@@ -47,7 +47,16 @@ const Comment=Loadable({
     loader:()=>import('../views/layer/special/comment/comment'),
     loading:Loading
 })
-
+//奇趣分类
+const Qiquclassify = Loadable({
+    loader: () => import('../views/layer/classify/classDetail/classDetail'),
+    loading: Loading
+})
+//商品购物详情
+const ShoppingDetail = Loadable({
+    loader: () => import('../views/layer/classify/shopDetail/shopDetail'),
+    loading: Loading
+})
 
 
 
@@ -96,7 +105,16 @@ let router=[
     },{
         path:"/Comment/:id",
         component:Comment
-    },
+    },{
+        //奇趣分类
+        path: "/Qiquclassify/:id",
+        component: Qiquclassify
+    },{
+        //奇趣分类
+        path: "/shoppingDetail/:id",
+        component: ShoppingDetail
+    }
+
 ]
 
 

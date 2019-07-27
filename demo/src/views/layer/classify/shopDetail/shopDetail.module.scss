@@ -1,9 +1,25 @@
+.introduce{
+    width: 100%;
+    text-align: center;
+    h2{
+        font-weight: normal;
+        font-size: 0.18rem;
+    }
+    h3{
+        color: red;
+        font-size: 0.16rem;
+        line-height: 0.35rem;
+    }
+  
+}
+
 .headerBox{
     width: 100%;
     display: flex;
     border-bottom: 2px solid #ccc;
     height:0.5rem;
     line-height:0.5rem;
+    font-size: 0.16rem;
    p{
     width: 15%;
     text-align: center;
@@ -19,27 +35,9 @@
 }
 a{
     display: inline-block;
+    // font-size: 0.16rem;
     text-decoration: none;
     color:#000;
     text-align: center;
    
-}
-.btnBox{
-    display: flex;
-    justify-content: space-between;
-    button{
-        width: 1rem;
-        height: 0.25rem;
-        background: rgb(16,142,233);
-        border:none;
-        border-radius: 0.15rem;
-        margin:0 0.1rem;
-    }
-}
-
-.clean{
-    display: block;
-}
-.cleanNone{
-    display: none;
 }

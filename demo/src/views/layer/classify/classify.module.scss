@@ -1,0 +1,64 @@
+.classifyBox{
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    overflow: hidden;
+    .hesederBox{
+        width:100%;
+        height: 0.4rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #ffffff;
+        border-bottom: 2px solid #ccc;
+        header{
+           width: 90%;
+           margin: 0 auto;
+           z-index: 99;
+            input{
+                width: 100%;
+                height: 0.3rem;
+                line-height: 0.4rem;
+                text-align: center;
+                border-radius: 0.08rem;
+                border: none;
+                background: rgb(237,237,237);
+                margin-top: 0.04rem;
+            }
+        }
+    }
+
+}
+
+.centen{
+    width: 100%;
+    height: 100%;
+    margin-top: 0.4rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.classLift{
+    width: 30%;
+    height: 100%;
+    overflow: hidden;
+    ul{
+        position: fixed;
+        width: 30%;
+        height: 100%;
+        // overflow: hidden;
+        border-right: solid 1px #ccc;
+        // flex: 1;
+       li{
+           width: 100%;
+           height: 0.4rem;
+           line-height: 0.4rem;
+           text-align: center;
+       }
+    }
+}
+
+.active{
+    border-left: solid 2px rgb(16, 142, 243);
+    color: rgb(16, 142, 243);
+}

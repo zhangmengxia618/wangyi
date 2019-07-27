@@ -16,14 +16,9 @@ export function specialList(params) {
 
 //根据专题Id获取相关专题
 export function specialRelated(params) {
-  console.log(params)
   return request.get('/topic/related', {params});
 }
 //对用户进行评论
 export function specialPost(params) {
-  console.log(params)
   return request.post('/comment/post', params);
 }
-
-
-
