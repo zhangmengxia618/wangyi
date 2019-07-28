@@ -7,6 +7,7 @@ import {inject,observer} from "mobx-react"
 class ClassRight extends Component {
     render() {
         let currentCategory=this.props.currentCategory;
+        console.log(currentCategory)
         return (
             <div className={style.classRight}>
                 <div className={style.images}><img src={currentCategory.wap_banner_url} alt=""/></div>

@@ -22,7 +22,6 @@ class Comment extends Component {
                     <a href={`/SpecialDetail/${id}`}>
                         <button onClick={()=>{this.props.special.specialPostData(this.props.special.nameCom,1,this.props.match.params.id)}}>确定</button>
                     </a>
-                    
                </div>
             </div>
         )

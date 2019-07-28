@@ -1,5 +1,5 @@
 import { observable, action } from "mobx";
-import {classCurrent,catalogCurrent,categoryData,categoryList,shoppDetail} from "../../services"
+import {classCurrent,catalogCurrent,categoryData,categoryList,shoppDetail,shoppRelated} from "../../services"
 export default class Classify{
     // 左侧数据
     @observable categoryList = [];
@@ -13,7 +13,9 @@ export default class Classify{
     @observable brotherList = [];
     //商品购物详情
     @observable shoppingData = [];
-
+    // 相关商品
+    @observable shoppRelatedData = [];
+    
     //渲染初始数据
     @action ClassifyData(){
         classCurrent().then(res=>{
@@ -49,6 +51,15 @@ export default class Classify{
         console.log(id)
         shoppDetail({id:id}).then(res=>{
             this.shoppingData=res.data;
+        })
+    }
+
+    //相关商品
+    @action related(id){
+        console.log(id)
+        shoppRelated({id:id}).then(res=>{
+            console.log(res.data)
+            this.shoppRelatedData=res.data.goodsList;
         })
     }
 }
