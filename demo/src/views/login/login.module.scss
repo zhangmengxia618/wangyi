@@ -1,0 +1,33 @@
+.login{
+   width: 100%;
+   height: 100%;
+   p{
+     width: 50%;
+    margin: 1.5rem auto;
+     img{
+       display: inline-block;
+        width: 100%;
+        height: 100%;
+        
+     }
+   }
+   input{
+     width: 90%;
+     height: 0.6rem;
+     margin-top: 0.5rem;
+     border:none;
+     border-bottom: 1px solid #ccc;
+     padding-left: 0.2rem;
+   }
+
+   button{
+     display: inline-block;
+     width: 80%;
+     height: 1rem;
+     margin: 0.4rem auto;
+     background: rgb(15, 141, 232);
+     text-align: center;
+     border: none;
+     
+   }
+}

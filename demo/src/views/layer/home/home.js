@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import style from './home.module.scss'
 import ReactSwipe from 'react-swipe';
 import { inject, observer } from 'mobx-react'
-
+import { NavLink } from 'react-router-dom'
 
 @inject('home')
 @observer
@@ -35,8 +35,12 @@ class Home extends Component {
                         {
                             this.props.home.data.channel && this.props.home.data.channel.map((item, i) => {
                                 return <li key={item.sort_order}>
-                                    <img src={item.icon_url} alt={item.name} />
-                                    <p>{item.name}</p>
+
+                                    <NavLink to={`/Qiquclassify/${item.id}`} >
+                                        <img src={item.icon_url} alt={item.name} />
+                                        <p>{item.name}</p>
+                                    </NavLink>
+
                                 </li>
                             })
                         }
@@ -119,7 +123,7 @@ class Home extends Component {
                                             })
                                         }
                                         <li className={style.addmore}>
-                                            更多{item.name}好物<br/>
+                                            更多{item.name}好物<br />
                                         </li>
                                     </ul>
                                 </div>
