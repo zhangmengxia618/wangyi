@@ -1,238 +1,278 @@
 .shopDetalBox{
     width: 100%;
     height: 100%;
+    // overflow: hidden;
     background: rgb(245, 245, 249);
     display: flex;
     flex-direction: column;
-    .hint{
+    .headerBox{
         width: 100%;
-        height: .35rem;
-        background: rgb(244, 244, 244);
-        ul{
-            width: 100%;
-            height: 100%;
-            display: flex;
-            li{
-                width: 33%;
+        display: flex;
+        border-bottom: 2px solid #ccc;
+        height:0.5rem;
+        line-height:0.5rem;
+        background: #fff;
+        flex-shrink: 0;
+            p{
+                width: 25%;
                 height: 100%;
-                list-style: none;
                 text-align: center;
-                height: 0.35rem;
-                line-height: 0.35rem;
-                span{
-                     color: red;
-                     margin-right: 0.08rem;
+                a{
+                    display: inline-block;
+                    font-size: 0.20rem;
+                    text-decoration: none;
+                    color:#000;
+                    text-align: left;
+                    padding-left: 0.1rem;
+                }
+            
+            }
+            header{
+                font-size: 0.16rem;
+            }
+    }
+    // 内容
+    .centrnBox{
+        width: 100%;
+        overflow: scroll;
+        flex: 1;
+        .hint{
+            width: 100%;
+            height: .35rem;
+            background: rgb(244, 244, 244);
+            ul{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                li{
+                    width: 33%;
+                    height: 100%;
+                    list-style: none;
+                    text-align: center;
+                    height: 0.35rem;
+                    line-height: 0.35rem;
+                    span{
+                         color: red;
+                         margin-right: 0.08rem;
+                    }
                 }
             }
         }
-    }
-    .card-swipe{
-        width: 100%;
-        height: 2.2rem;
-        background: #ccc;
-        .card-slide{
+        .card-swipe{
             width: 100%;
-            height: 100%;
-            .img-box{
-                width: 0.1rem;
+            height: 2.2rem;
+            background: #ccc;
+            .card-slide{
+                width: 100%;
                 height: 100%;
+                .img-box{
+                    width: 0.1rem;
+                    height: 100%;
+                    img{
+                        width: 100%;
+                        height: 2.2rem;
+                    }
+                }
+            }
+         }
+        .introduceH{
+            width: 100%;
+            margin-bottom: 0.2rem;
+            .introduce{
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid #ccc;
+                height: 100%;
+              
+                h2{
+                    font-weight: normal;
+                    font-size: 0.20rem;
+                    padding-top: 0.1rem;
+                    height: .3rem;
+                }
+                h3{
+                    color: red;
+                    font-size: 0.18rem;
+                    line-height: 0.45rem;
+                    margin-bottom: 0.2rem;
+                }
+            }
+            .count{
+                width: 100%;
+                height: 0.5rem;
+                
+                display: flex;
+                justify-content: space-between;
+                p{
+                    text-align: right;
+                   
+                    line-height: 0.5rem;
+                    span{
+                        margin-right: 0.2rem;
+                        font-size: 0.16rem;
+                    }
+                    .spanCount{
+                          color: red;
+                    }
+            
+                }
+            }
+        }
+        .comment{
+            width: 100%;
+            background: #fff;
+            margin-bottom: 0.2rem;
+            ul{
+                display: flex;
+                list-style: none;
+                justify-content: space-between;
+                border-bottom: 1px solid #000;
+                li{
+                    width: 50%;
+                    padding-left: 0.2rem;
+                    line-height: 0.35rem;
+                }
+            }
+            dl{
+                padding-left: 0.2rem;
+                padding-top: 0.1rem;
+                dt{
+                    display: flex;
+                }
+            }
+            img{
+                width: 1.2rem;
+                height: 1.2rem;
+            }
+        }
+        .product{
+            width: 100%;
+            background: #fff;
+            padding-bottom: 0.2rem;
+            dl{
+                width: 100%;
+                margin: 0 auto;
+                background: rgb(220, 223, 230);
+                margin-top: 0.1rem;
+                display: flex;
+                line-height: 0.35rem;
+                text-align: left;
+               dt{
+                   width: 30%;
+                   padding-left: 0.2rem;
+                   color: rgb(152, 128, 128);
+               }
+            }
+            h2{
+                text-align: center;
+                color: rgb(16, 142, 243);
+                font-weight: normal;
+                font-size: 0.16rem;
+                padding-top: 0.2rem;
+            }
+        }
+        .issue{
+            width: 100%;
+            background: #fff;
+            padding-bottom: 0.3rem;
+            h2{
+                text-align: center;
+                color: rgb(16, 142, 243);
+                font-weight: normal;
+                font-size: 0.16rem;
+                padding-top: 0.2rem;
+            }
+            i{
+                width: 20%;
+                color: red;
+                font-weight: bold;
+            }
+            div{
+                width:100%;
+                margin: 0 auto;
+                h3{
+                    display: flex;
+                    margin-left: -0.2rem;
+                    line-height: 0.35rem;
+                }
+                p{
+                    color: rgb(128, 128, 128);
+                }
+            }
+        }
+        .goodsDesc{
+            width: 100%;
+            p{
+                margin-bottom: 0;
                 img{
                     width: 100%;
-                    height: 2.2rem;
                 }
             }
-           
+        }
+        .like{
+            width: 100%;
+            height: 100%;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background: #fff;
+            margin-top: 0.1rem;
+            h2{
+                text-align: center;
+                color: rgb(16, 142, 243);
+                font-weight: normal;
+                font-size: 0.16rem;
+                padding-top: 0.2rem;
+            }
+            dl{
+                width: 49%;
+                text-align: center;
+    
+              h3{
+                  color: red;
+              }
+            }
+        }
+    }
+
+    .footer{
+        width:100%;
+        height:0.5rem;
+        line-height: 0.5rem;
+        display:flex;
+        // border-top:.01rem solid #000;
+        justify-content: space-between;
+        span{
+            display:inline-block;
+            height: 100%;
+            width:25%;
+            text-align: center;
+            font-size: 0.18rem;
+            color: red;
+            
+        }
+        span.collect{
+            background: #f90 !important;
+        }
+        .btn{
+            flex:1;
+            height: 100%;
+            button{
+              height: 100%;
+                width:50%;
+                outline: none;
+                color:#fff;
+                border:0;
+            }
         }
        
-     }
-    .introduceH{
-        width: 100%;
-        margin-bottom: 0.2rem;
-        .introduce{
-            width: 100%;
-            text-align: center;
-            border-bottom: 1px solid #ccc;
-            height: 100%;
-          
-            h2{
-                font-weight: normal;
-                font-size: 0.20rem;
-                padding-top: 0.1rem;
-                height: .3rem;
-            }
-            h3{
-                color: red;
-                font-size: 0.18rem;
-                line-height: 0.45rem;
-                margin-bottom: 0.2rem;
-            }
-        }
-        .count{
-            width: 100%;
-            height: 0.5rem;
-            
-            display: flex;
-            justify-content: space-between;
-            p{
-                text-align: right;
-               
-                line-height: 0.5rem;
-                span{
-                    margin-right: 0.2rem;
-                    font-size: 0.16rem;
-                }
-                .spanCount{
-                      color: red;
-                }
-        
-            }
-        }
     }
-    .comment{
-        width: 100%;
-        height: 100%;
-        background: #fff;
-        margin-bottom: 0.2rem;
-        ul{
-            display: flex;
-            list-style: none;
-            justify-content: space-between;
-            border-bottom: 1px solid #000;
-            li{
-                width: 50%;
-                padding-left: 0.2rem;
-                line-height: 0.35rem;
-            }
-        }
-        dl{
-            padding-left: 0.2rem;
-            padding-top: 0.1rem;
-            dt{
-                display: flex;
-            }
-        }
-        img{
-            width: 1.2rem;
-            height: 1.2rem;
-        }
-    }
-    .product{
-        width: 100%;
-        height: 100%;
-        background: #fff;
-        padding-bottom: 0.2rem;
-        dl{
-            width: 100%;
-            margin: 0 auto;
-            background: rgb(220, 223, 230);
-            margin-top: 0.1rem;
-            display: flex;
-            line-height: 0.35rem;
-            text-align: left;
-           dt{
-               width: 30%;
-               padding-left: 0.2rem;
-               color: rgb(152, 128, 128);
-           }
-        }
-        h2{
-            text-align: center;
-            color: rgb(16, 142, 243);
-            font-weight: normal;
-            font-size: 0.16rem;
-            padding-top: 0.2rem;
-        }
-    }
-    .issue{
-        width: 100%;
-        height: 100%;
-        background: #fff;
-        padding-bottom: 0.3rem;
-        h2{
-            text-align: center;
-            color: rgb(16, 142, 243);
-            font-weight: normal;
-            font-size: 0.16rem;
-            padding-top: 0.2rem;
-        }
-        i{
-            width: 20%;
-            color: red;
-            font-weight: bold;
-        }
-        div{
-            width:100%;
-            margin: 0 auto;
-            h3{
-                display: flex;
-                margin-left: -0.2rem;
-                line-height: 0.35rem;
-            }
-            p{
-                color: rgb(128, 128, 128);
-            }
-        }
-    }
-    .goodsDesc{
-        width: 100%;
-        img{
-            width: 100%;
-        }
-    }
-    .like{
-        width: 100%;
-        height: 100%;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        background: #fff;
-        margin-top: 0.1rem;
-        h2{
-            text-align: center;
-            color: rgb(16, 142, 243);
-            font-weight: normal;
-            font-size: 0.16rem;
-            padding-top: 0.2rem;
-        }
-        dl{
-            width: 49%;
-            text-align: center;
 
-          h3{
-              color: red;
-          }
-        }
-    }
 
     
+  
 }
 
 
-.headerBox{
-    width: 100%;
-    display: flex;
-    border-bottom: 2px solid #ccc;
-    height:0.5rem;
-    line-height:0.5rem;
-    background: #fff;
-    flex-shrink: 0;
-   p{
-    width: 25%;
-    height: 100%;
-    text-align: center;
-       a{
-        display: inline-block;
-        font-size: 0.20rem;
-        text-decoration: none;
-        color:#000;
-        text-align: left;
-        padding-left: 0.1rem;
-       }
-     
-   }
-   header{
-    font-size: 0.16rem;
-   }
-}
 a{
     display: inline-block;
     // font-size: 0.16rem;
@@ -242,3 +282,53 @@ a{
    
 }
 
+.goodscart_list{
+    width: 100%;
+    height: 100%;
+    dl{
+        display:flex;
+        justify-content: space-between;
+        dt>img{
+          width:1rem;
+          height:1rem;
+        }
+        dd{
+            flex:1;
+            margin-left: .2rem;
+            span{
+                color:red;
+            }
+        }
+    }
+    .goods_money{
+        width:100%;
+        >div{
+           margin: 0 .0.1rem ;
+           span{
+                display:inline-block;
+                width:0.5rem;
+                height: .4rem;
+                font-size: .0.14rem;
+                line-height: .4rem;
+                text-align: center;
+                border-left:.01rem solid #ccc;
+                border-top:.01rem solid #ccc;
+                border-bottom:.01rem solid #ccc;
+           }
+           span:last-child {
+               border-right: .01rem solid #ccc;
+           }
+        }
+    }
+    .goodsBtn{
+        width:100%;
+        button{
+            width:50%;
+            outline: none;
+            border:0;
+            height:.4rem;
+            line-height: .4rem;
+            color:#fff;
+        }
+    }
+  }

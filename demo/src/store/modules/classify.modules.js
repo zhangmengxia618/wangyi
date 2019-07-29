@@ -1,5 +1,5 @@
 import { observable, action } from "mobx";
-import {classCurrent,catalogCurrent,categoryData,categoryList,shoppDetail,shoppRelated,commentList} from "../../services"
+import {classCurrent,catalogCurrent,categoryData,categoryList,shoppDetail,shoppRelated,commentList,addorDelete,searchIndex,searchHelper,searchList} from "../../services"
 export default class Classify{
     // 左侧数据
     @observable categoryList = [];
@@ -18,7 +18,27 @@ export default class Classify{
     // 相关商品评论详情
     @observable commentListData = [];
     
+    // 购物车初始
+    @observable count = 0;
+    //收藏
+    @observable addorShow = false;
+    //模糊搜索初始渲染（热门）
+    @observable hotKeywordList = [];
+    //历史
+    @observable historyKeywordList = [];
+    //input 默认值
+    @observable defaultKeyword = [];
 
+    //input 初始值
+    @observable Keyword = ''
+
+    //input 模糊搜索结果
+    @observable KeywordData =[];
+
+     //input 模糊搜索相对应列表
+     @observable searchListData =[];
+    
+    
     //渲染初始数据
     @action ClassifyData(){
         classCurrent().then(res=>{
@@ -70,8 +90,48 @@ export default class Classify{
      @action commentL(id){
         console.log(id)
         commentList({valueId:id,typeId:0}).then(res=>{
-            console.log(res.data)
             this.commentListData=res.data.data;
         })
     }
+
+    @action changeCount(type){
+        type==="+"?this.count++:this.count--;
+    }
+    //是否添加到收藏
+    @action addorD(id){
+        addorDelete({typeId:id,valueId:0}).then(res=>{
+            this.addorShow=res.data.type==="add"?true:false;
+        })
+    }
+
+       //模糊搜索初始渲染
+    @action searchIndexData(){
+        searchIndex().then(res=>{
+            console.log(res)
+            this.hotKeywordList=res.data.hotKeywordList;
+            this.historyKeywordList=res.data.historyKeywordList;
+            this.defaultKeyword=res.data.defaultKeyword;
+        })
+    }
+
+    //商品查询模糊查询关键字
+    @action searchHelper(value){
+        this.Keyword=value;
+        searchHelper({keyword:value}).then(res=>{
+            this.KeywordData=res.data;
+        })
+    }
+    
+    //模糊搜索相对应列表
+    @action searchListD(value){
+        console.log(value)
+        // this.Keyword=value;
+        searchList({keyword:value}).then(res=>{
+            console.log(res.data.data)
+            this.searchListData=res.data.data;
+        })
+    }
+    // 
+
+    
 }

@@ -19,7 +19,7 @@ class Classify extends Component {
             <div className={style.classifyBox}>
                 <div className={style.hesederBox}>
                     <header>
-                        <input type="text" placeholder="搜索商品,共239宽好物"/>
+                        <p onClick={()=>this.props.history.push('/search')}>搜索商品,共239宽好物</p>
                     </header>
                 </div>
                 <div className={style.centen}>

@@ -69,6 +69,11 @@ const ListDetail = Loadable({
     loading: Loading
 })
 
+//搜索详情
+const Search = Loadable({
+    loader: () => import('../views/layer/classify/search/search'),
+    loading: Loading
+})
 
 
 
@@ -133,6 +138,10 @@ let router = [
         //制造商
         path: "/zhizaoshang/:id",
         component: Zhizaoshang
+    }, {
+        //搜索
+        path: "/search",
+        component: Search
     }
     
 ]

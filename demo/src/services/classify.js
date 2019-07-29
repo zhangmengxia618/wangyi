@@ -30,14 +30,32 @@ export function shoppRelated(params) {
 
 // 相关商品评论
 export function commentList(params) {
-  console.log(params)
   return request.get('/comment/list', {params});
+}
+
+//是否添加到收藏栏
+export function addorDelete(params) {
+  return request.post('/collect/addordelete', params);
+}
+
+//模糊搜索（获取商品查询的相关信息）
+export function searchIndex(params) {
+  console.log(params)
+  return request.get('/search/index', {params});
+}
+
+//商品查询模糊查询关键字
+export function searchHelper(params) {
+  console.log(params)
+  return request.get('/search/helper', {params});
 }
 
 
 
-
-
+//模糊搜索相对应列表
+export function searchList(params) {
+  return request.get('/goods/list', {params});
+}
 
 
 

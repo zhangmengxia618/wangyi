@@ -3,6 +3,7 @@ import React, { Component ,Fragment} from 'react'
 import Routers from "./router"
 import routers from "./router/routerPath"
 import "./App.css"
+import 'antd/dist/antd.css';
 class App extends Component {
   render() {
       return (
