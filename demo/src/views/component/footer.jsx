@@ -1,5 +1,5 @@
-import React, { Component} from 'react'
-import { BrowserRouter as Router, Route,Redirect,Switch,NavLink,withRouter} from "react-router-dom"
+import React, { Component } from 'react'
+import { NavLink} from "react-router-dom"
 import style from "./footer.module.scss"
 export class Footer extends Component {
     render() {

@@ -110,7 +110,7 @@ class ShopDetail extends Component {
                     
                 </div>
                
-               <div  dangerouslySetInnerHTML={{__html:info&&info.goods_desc}}>
+               <div  dangerouslySetInnerHTML={{__html:info&&info.goods_desc}} className={style.goodsDesc}>
                </div>
 
                <div className={style.issue}>

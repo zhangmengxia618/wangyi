@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route,Redirect,Switch} from "react-router-dom";
+import { BrowserRouter as Router} from "react-router-dom";
 import React from 'react';
 
 import router from "./routerPath"

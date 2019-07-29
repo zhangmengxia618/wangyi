@@ -1,5 +1,5 @@
 import React  from 'react'
-import { BrowserRouter as Router, Route,Redirect,Switch} from "react-router-dom";
+import { Route,Redirect,Switch} from "react-router-dom";
 
 function  View(props){
    let {router}=props;
@@ -10,7 +10,7 @@ function  View(props){
    return <Switch>
        {
            arr.map((item,index)=>{
-               return <Route path={item.path} render={(props)=>{
+               return <Route path={item.path} key={index} render={(props)=>{
                    return <item.component {...props} child={item.children}></item.component>
                }}>
                         

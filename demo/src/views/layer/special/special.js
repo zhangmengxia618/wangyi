@@ -10,7 +10,7 @@ class Special extends Component {
     render() {
         console.log(this.props.special.specialData)
         return (
-            <div>
+            <div className={style.con}>
                 {
                  this.props.special.specialData&&this.props.special.specialData.map((item,index)=>{
                     //  console.log(item)
