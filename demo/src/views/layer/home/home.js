@@ -52,9 +52,11 @@ class Home extends Component {
                             {
                                 this.props.home.data.brandList && this.props.home.data.brandList.map((item, i) => {
                                     return <li className={style.brandli} key={item.id}>
+                                        <NavLink to={`/Zhizaoshang/${item.id}`} >
                                         <p className={style.brandname}>{item.name}</p>
                                         <p className={style.brandprice}>{item.floor_price}元起</p>
                                         <img className={style.brandimg} src={item.new_pic_url} alt={item.name} />
+                                        </NavLink>
                                     </li>
                                 })
                             }

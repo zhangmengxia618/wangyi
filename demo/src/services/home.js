@@ -6,6 +6,12 @@ export function home(){
 
 
 //获取分类ID分类Nav数据
-export function qiqu(params){
-  return request.get('/goods/category',{params})
+// export function qiqu(params){
+//   return request.get('/goods/category',{params})
+// }
+
+
+//获取制造商数据
+export function zhizaoshang(params){
+  return request.get('/brand/detail',{params})
 }

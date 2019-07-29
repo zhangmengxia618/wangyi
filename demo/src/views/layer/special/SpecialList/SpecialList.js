@@ -8,7 +8,6 @@ import style from "./specialDetail.module.scss"
 class SpecialList extends Component {
     constructor(props){
         super(props)
-        // let size=this.props.location.search.split("&&")[1].split('=')[1];
         let id=this.props.match.params.id;
         this.props.special.specialListD(id,1)
     }

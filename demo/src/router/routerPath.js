@@ -48,11 +48,20 @@ const Comment = Loadable({
     loading: Loading
 })
 //奇趣分类
-// const Qiquclassify = Loadable({
-//     loader: () => import('../views/layer/qiquclassify/qiquclassify'),
-//     loading: Loading
-// })
-
+const Qiquclassify = Loadable({
+    loader: () => import('../views/layer/classify/classDetail/classDetail'),
+    loading: Loading
+})
+//商品购物详情
+const ShoppingDetail = Loadable({
+    loader: () => import('../views/layer/classify/shopDetail/shopDetail'),
+    loading: Loading
+})
+//制造商
+const Zhizaoshang = Loadable({
+    loader: () => import('../views/layer/home/zhizaoshang/zhizaoshang'),
+    loading: Loading
+})
 
 
 
@@ -101,7 +110,20 @@ let router = [
     }, {
         path: "/Comment/:id",
         component: Comment
+    }, {
+        //奇趣分类
+        path: "/Qiquclassify/:id",
+        component: Qiquclassify
+    }, {
+        //奇趣分类
+        path: "/shoppingDetail/:id",
+        component: ShoppingDetail
+    }, {
+        //制造商
+        path: "/zhizaoshang/:id",
+        component: Zhizaoshang
     }
+
 ]
 
 

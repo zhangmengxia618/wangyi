@@ -1,0 +1,16 @@
+.ClassDetail{
+    flex:1;
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+    dl{
+        width: 50%;
+        text-align: center;
+        dt{
+            width: 100%;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}

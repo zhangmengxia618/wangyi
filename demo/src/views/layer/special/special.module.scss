@@ -1,6 +1,8 @@
 .con{
    flex:1;
    overflow-y: auto;
+   display: flex;
+   flex-direction: column;
 }
 
 .special{
@@ -8,6 +10,12 @@
    text-align: center;
    margin: 0.2rem 0 ;
    background: #fff;
+   dt{
+      width: 100%;
+      img{
+         width: 100%;
+      }
+   }
    h3{
       color: red;
    }
@@ -22,5 +30,6 @@
 
 .a{
    text-decoration: none;
+   width: 100%;
    color: #000;
 }
