@@ -15,3 +15,8 @@ export function home(){
 export function zhizaoshang(params){
   return request.get('/brand/detail',{params})
 }
+
+//根据制造商id获取制造商商品列表
+export function branddata(params) {
+  return request.get('/goods/list', { params })
+}

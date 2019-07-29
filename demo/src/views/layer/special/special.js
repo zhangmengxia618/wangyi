@@ -15,7 +15,7 @@ class Special extends Component {
                  this.props.special.specialData&&this.props.special.specialData.map((item,index)=>{
                     //  console.log(item)
                      return (
-                        <a href={`/SpecialDetail/${item.id}`} className={style.a}>
+                        <a href={`/SpecialDetail/${item.id}`} className={style.a} key={item.id}>
                              <dl className={style.special} >
                                 <dt>
                                 <img src={item.scene_pic_url} alt=""/>

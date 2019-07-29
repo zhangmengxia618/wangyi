@@ -63,6 +63,17 @@ const Zhizaoshang = Loadable({
     loading: Loading
 })
 
+//收藏页面
+const Collect = Loadable({
+    loader: () => import('../views/layer/mine/collect/collect'),
+    loading: Loading
+})
+
+const Address = Loadable({
+    loader: () => import('../views/layer/mine/address/address'),
+    loading: Loading
+})
+
 
 
 let router = [
@@ -122,6 +133,14 @@ let router = [
         //制造商
         path: "/zhizaoshang/:id",
         component: Zhizaoshang
+    }, {
+        //收藏页面
+        path: "/collect",
+        component: Collect
+    }, {
+        //地址管理
+        path: "/address",
+        component: Address
     }
 
 ]

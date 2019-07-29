@@ -3,6 +3,7 @@ import Login from './modules/login.modules'
 import Home from './modules/home.modules'
 import Special from './modules/special.modules'
 import Classify from "./modules/classify.modules"
+import Collect from './modules/collect.module'
 // 实例化模块
 //登录
 const login = new Login();
@@ -11,6 +12,7 @@ const home = new Home();
 //专题
 const special = new Special();
 
+const collect = new Collect()
 
 const classify = new Classify();
 //登录
@@ -20,5 +22,6 @@ export default{
     //专题
     special,
     //分类
-    classify
+    classify,
+    collect
 };
