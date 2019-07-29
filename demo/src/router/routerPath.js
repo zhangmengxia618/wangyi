@@ -58,6 +58,13 @@ const ShoppingDetail = Loadable({
     loading: Loading
 })
 
+//商品列表评论详情
+const ListDetail = Loadable({
+    loader: () => import('../views/layer/classify/listDetail/listDetail'),
+    loading: Loading
+})
+
+
 
 
 let router=[
@@ -113,8 +120,12 @@ let router=[
         //奇趣分类
         path: "/shoppingDetail/:id",
         component: ShoppingDetail
+    },{
+        //商品评论详情
+        path: "/listDetail/:id",
+        component: ListDetail
     }
-
+    
 ]
 
 

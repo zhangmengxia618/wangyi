@@ -13,12 +13,13 @@ class ShopDetail extends Component {
         let shoppingData=this.props.classify.shoppingData;
         let info=shoppingData.info&&shoppingData.info;
         let shoppRelatedData=this.props.classify.shoppRelatedData;
-        console.log(shoppingData.comment&&shoppingData.comment.data)
+        let comment=shoppingData.comment&&shoppingData.comment.data;
         let opt={
             auto: 1000,
             autoPlay: true, //是否开启自动播放
             currentPoint: 1, //初始位置，默认从0即第一个元素开始
         }
+        console.log() 
         return (
             <div className={style.shopDetalBox}>
                 <div className={style.headerBox}>
@@ -27,19 +28,32 @@ class ShopDetail extends Component {
                         {info&&info.name}
                     </header>
                 </div>
-                <ReactSwipe className="card-slide" swipeOptions={opt}>
-                    {
-                        shoppingData.gallery&&shoppingData.gallery.map((item,index)=> <div key={index+"img"}><img src={item.img_url} alt=""/></div>)
-                    }
-                    
-                </ReactSwipe>
-                <div className={style.hint}>
-                   <ul>
-                       <li><span>★</span>30天无忧退货</li>
-                       <li><span>★</span>48小时快速退款</li>
-                       <li><span>★</span>满88元免邮费</li>
-                   </ul>
+                <div className={style['card-swipe']} >
+                    <ReactSwipe className={style["card-slide"]} swipeOptions={opt}>
+                    {/* <div><img src="http://p0.meituan.net/movie/6309046b820ed1de6971d8fe19d3c3d892027.jpg" alt=""/></div>
+                    <div><img src="http://p0.meituan.net/movie/b06492e646a61c9bce9f08dc0f058c02151482.jpg" alt=""/></div>
+                    <div><img src="http://p0.meituan.net/movie/b64e58008e4883490cf60b466b75e595103754.jpg" alt=""/></div> */}
+        
+                       
+                         {
+                            shoppingData.gallery&&shoppingData.gallery.map((item,index)=>{
+                                return (
+                                   
+                                        <div key={index+"img"} className={style['img-box']}><img src={item.img_url} alt=""/></div>
+                                )
+                            })
+                        }
+                    </ReactSwipe> 
                 </div>
+                <div className={style.hint}>
+                    <ul>
+                        <li><span>★</span>30天无忧退货</li>
+                        <li><span>★</span>48小时快速退款</li>
+                        <li><span>★</span>满88元免邮费</li>
+                    </ul>
+                </div> 
+              
+              
                 <div className={style.introduceH}>
                     <div className={style.introduce}>
                         <h2>{info&&info.name}</h2>
@@ -52,25 +66,33 @@ class ShopDetail extends Component {
                     </div>  
                 </div>
                 <div className={style.comment}>   
-                   <ul>
-                       <li>评论{(shoppingData.comment&&shoppingData.comment.count)}</li>
-                       <li>查看全部 》</li>
-                   </ul>
-                   {/* {
-                       shoppingData.comment&&shoppingData.comment.data.map((item,index)=>{
-                           console.log(item)
-                       })
-                   } */}
-                   <dl>
-                       <dt>
-                          <p>米明</p>
-                          <p>20126465</p>
-                       </dt>
-                       <dd>
-                          <p>cdsbcsdjkcbsdjkc</p>
-                          <img src="" alt=""/>
-                       </dd>
-                   </dl>         
+                {
+                    comment&&comment.pic_list?<div>
+                        <ul>
+                            <li>评论{(shoppingData.comment&&shoppingData.comment.count)}</li>
+                            <li onClick={()=>this.props.history.push(`/listDetail/${this.props.match.params.id}`)}>查看全部 ></li>
+                        </ul>
+                    
+                        <dl>
+                            <dt>
+                                <p>{'user_info' in comment&&comment && 'username' in comment&&comment.user_info?comment&&comment.user_info.username:'匿名用户'}</p>
+                                <p>{comment&&comment.add_time}</p>
+                            </dt>
+                            <dd>
+                                <p>{comment&&comment.content}</p>
+                            <h3>
+                                {
+                                    comment&&comment.pic_list===undefined?null:comment&&comment.pic_list.map((item,index)=>{
+                                        return  <img src={item.pic_url} key={index+"im"} alt=""/>
+                                    })
+                                }
+                            </h3>
+                            
+                            </dd>
+                        </dl>
+                    </div>:null
+                }
+                  
                </div>
                
                 <div className={style.product}>
