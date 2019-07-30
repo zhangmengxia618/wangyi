@@ -37,8 +37,10 @@ class ClassDetail extends Component {
                     <h2>{currentCategory && currentCategory.name}</h2>
                     <p>{currentCategory && currentCategory.front_name}</p>
                 </div>
-
-                <ClassDetailList data={brotherList}></ClassDetailList>
+            <div className={style.deyails}>
+               <ClassDetailList data={brotherList}></ClassDetailList>
+            </div>
+              
 
             </div>
         )

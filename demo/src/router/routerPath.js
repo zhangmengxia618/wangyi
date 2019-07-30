@@ -73,6 +73,17 @@ const Address = Loadable({
     loader: () => import('../views/layer/mine/address/address'),
     loading: Loading
 })
+//商品列表评论详情
+const ListDetail = Loadable({
+    loader: () => import('../views/layer/classify/listDetail/listDetail'),
+    loading: Loading
+})
+
+//搜索详情
+const Search = Loadable({
+    loader: () => import('../views/layer/classify/search/search'),
+    loading: Loading
+})
 
 
 
@@ -130,6 +141,10 @@ let router = [
         path: "/shoppingDetail/:id",
         component: ShoppingDetail
     }, {
+        //商品评论详情
+        path: "/listDetail/:id",
+        component: ListDetail
+    }, {
         //制造商
         path: "/zhizaoshang/:id",
         component: Zhizaoshang
@@ -141,6 +156,10 @@ let router = [
         //地址管理
         path: "/address",
         component: Address
+    }, {
+        //搜索
+        path: "/search",
+        component: Search
     }
 
 ]
