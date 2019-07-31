@@ -25,13 +25,13 @@ import CommentList from "../../../component/commentList/index"
         return (
             <div className={style.DetailBox}>
                 <div className={style.headerBox}>
-                    <p><NavLink  to="/layer/special">{"<"}</NavLink></p>
+                    <p><NavLink  to="/layer/special">&lt;</NavLink></p>
                     <header className={style.header}>
                         {this.props.special.specialDetailData.title}
                     </header>
                 </div>
                
-                <div  dangerouslySetInnerHTML={{__html:this.props.special.specialDetailData.content}}>
+                <div className={style.imgbox}  dangerouslySetInnerHTML={{__html:this.props.special.specialDetailData.content}}>
                </div>
                <div className={style.commentWrap}>
                     <div className={style.titleLine}>

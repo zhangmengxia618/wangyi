@@ -1,3 +1,4 @@
+
 .con{
    flex:1;
    overflow-y: auto;
@@ -8,12 +9,14 @@
 .special{
    width: 100%;
    text-align: center;
-   margin: 0.2rem 0 ;
+   margin: 0.1rem 0 ;
    background: #fff;
    dt{
       width: 100%;
+      height:2.2rem;
       img{
          width: 100%;
+         height: 100%;
       }
    }
    h3{
@@ -29,6 +32,7 @@
 }
 
 .a{
+   // display: block;
    text-decoration: none;
    width: 100%;
    color: #000;

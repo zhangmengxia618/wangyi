@@ -4,6 +4,7 @@ import Home from './modules/home.modules'
 import Special from './modules/special.modules'
 import Classify from "./modules/classify.modules"
 import Collect from './modules/collect.module'
+import Address from './modules/address.module'
 // 实例化模块
 //登录
 const login = new Login();
@@ -15,6 +16,7 @@ const special = new Special();
 const collect = new Collect()
 
 const classify = new Classify();
+const address=new Address()
 //登录
 export default{
     home,
@@ -23,5 +25,6 @@ export default{
     special,
     //分类
     classify,
-    collect
+    collect,
+    address
 };

@@ -1,5 +1,69 @@
 .con{
   width: 100%;
   height: 100%;
+  background: rgb(245, 245, 249)
 }
 
+.header{
+  width: 100%;
+  background: #fff;
+  height: .44rem;
+  display:flex;
+  align-items: center;
+  box-shadow: 0 .03rem .05rem #ccc;
+  z-index: 9999;
+  .left{
+    width: .6rem;
+       
+    text-align: center;
+  }
+  .tit{
+    flex:1;
+    text-align: center;
+  }
+  .right{
+    width: .6rem; 
+  }
+}
+
+
+.section{
+  flex:1;
+  overflow: auto;
+  margin-top:.02rem;
+    .ul{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .li{
+        width: 100%;
+        display: flex;
+        background: #fff;
+        height: 1.3rem;
+        border-bottom:.01rem solid rgb(240, 240, 240);
+        padding:0 .1rem;
+        box-sizing: border-box;
+      }
+    }
+}
+
+.imgbox{
+  width: 35%;
+  height: 100%;
+  img{
+    width: 100%;
+  }
+}
+.info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.brief{
+  color:rgb(155, 155, 155);
+}
+
+.price{
+  color: red;
+}
