@@ -150,7 +150,7 @@ class ShopDetail extends Component {
                 {console.log(this.props)}
                 <div className={style.footer}>
                     {console.log(this.props.classify.addorShow)}
-                        <span onClick={()=>{this.collect(this.props.match.params.id)}}  className={this.props.classify.addorShow?style.collect:''}><Icon type="star"  /></span>
+                        <span onClick={()=>{this.collect(this.props.match.params.id)}}  className={this.props.classify.userHasCollect===1?style.collect:''}><Icon type="star"  /></span>
                         <span onClick={()=>this.props.history.push('/layer/shoppingCart')}><Icon type="shopping-cart" />{this.props.classify.careOKValue}</span>
                         <div className={style.btn}>
                             <button style={{ background: "orangered" }} onClick={() => this.goodsMask()}>加入购物车</button>
@@ -198,7 +198,7 @@ class ShopDetail extends Component {
         this.props.classify.shopList(this.props.match.params.id)
         this.props.classify.related(this.props.match.params.id)
         this.props.classify.goodsCountD()
-       
+        this.props.classify.getCollectData()
     }
     
 
@@ -220,7 +220,7 @@ class ShopDetail extends Component {
     }
 
     collect(id){
-        this.props.classify.addorD(id)
+        this.props.classify.addorD(id,0)
         // this.setState({
         //     flag:!this.props.classify.addorShow
         // })

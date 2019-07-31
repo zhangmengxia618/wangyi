@@ -21,7 +21,7 @@ class ListDetail extends Component {
                         commentListData&&commentListData.map((item,index)=>{
                             console.log(item)
                             return (
-                                <dl>
+                                <dl key={index+"pl"}>
                                     <dt>
                                             {/* <p>匿名评论</p> */}
                                         <p>{'user_info' in item && 'username' in item.user_info?item.user_info.username:'匿名用户'}</p>

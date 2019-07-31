@@ -1,7 +1,7 @@
 import { observable, action } from "mobx";
 import {
     classCurrent,catalogCurrent,categoryData,categoryList,shoppDetail,
-    shoppRelated,commentList,addorDelete,searchIndex,searchHelper,searchList,clearHistory,addCart,goodsCount
+    shoppRelated,commentList,addorDelete,searchIndex,searchHelper,searchList,clearHistory,addCart,goodsCount,collectList
 } from "../../services"
 export default class Classify{
     // 左侧数据
@@ -44,6 +44,12 @@ export default class Classify{
     @observable careValue =-1;
      //input 添加成功后的值
      @observable careOKValue ='';
+     @observable collectList =[];
+     //收藏高领
+     @observable userHasCollect ='';
+
+     
+     
     
     //渲染初始数据
     @action ClassifyData(){
@@ -77,8 +83,9 @@ export default class Classify{
 
     //获取商品详情
     @action shopList(id){
-        console.log(id)
         shoppDetail({id:id}).then(res=>{
+            console.log(res.data.userHasCollect)
+            this.userHasCollect=res.data.userHasCollect;
             this.shoppingData=res.data;
         })
     }
@@ -105,8 +112,18 @@ export default class Classify{
     }
     //是否添加到收藏
     @action addorD(id){
-        addorDelete({typeId:id,valueId:0}).then(res=>{
+        addorDelete({typeId:0,valueId:id}).then(res=>{
             this.addorShow=res.data.type==="add"?true:false;
+            this.getCollectData({typeId:0})
+            this.shopList(id)
+        })
+    }
+
+      //收藏页数据
+    @action getCollectData(params) {
+        console.log(params)
+        collectList(params).then(res => {
+        this.collectData = res.data
         })
     }
        //模糊搜索初始渲染
