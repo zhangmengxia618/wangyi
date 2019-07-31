@@ -50,9 +50,9 @@
            text-align: center;
        }
     }
+    .active{
+        border-left: solid 2px rgb(16, 142, 243);
+        color: rgb(16, 142, 243);
+    }
 }
 
-.active{
-    border-left: solid 2px rgb(16, 142, 243);
-    color: rgb(16, 142, 243);
-}

@@ -1,46 +1,60 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react'
 import style from './collect.module.scss'
-import {NavLink} from 'react-router-dom'
+import { SwipeAction, List } from 'antd-mobile';
 
-
-@inject('collect')
+@inject("collect")
 @observer
+class collect extends Component {
+    componentDidMount(){
+        this.props.collect.getCollectData({typeId:0})
+    }
+    render() {
+        let list =this.props.collect.collectData;
+        console.log(list);
+        return (
+            <div className={style.collect}>
+                <div className={style.header}>
+                    <h3>easyLikeGoods</h3>
+                    <span onClick={()=>this.props.history.goBack()}>&lt;</span>
+                </div>
+                <div className={style.subject}>
+                   {list&&list.map(file=>
+                     <List key={file.id}>
+                         <SwipeAction 
+                        //   autoClose
+                          right={[
+                            {
+                              text: '删除',
+                              onPress: () => this.deteleBtn(file.value_id),
+                              style: { backgroundColor: 'red', color: '#fff' },
+                            }
+                          ]}
+                          >
+                          <List.Item >
+                             <dl style={{marginBottom:0}} >
+                              <a href={`/shoppingDetail/${file.value_id}`}>
+                                <dt><img src={file.list_pic_url} alt=""></img></dt>
+                                <dd>
+                                    <div style={{fontSize:".16rem"}}>{file.name}</div>
+                                    <div style={{color:"#ccc"}}>{file.goods_brief}</div>
+                                    <span>￥{file.retail_price}</span>
+                                </dd>
+                              </a>
+                             </dl>
+                         </List.Item>
+                         </SwipeAction>
+                     </List>
+                    )}
+                </div>
+            </div>
+        )
+    }
 
-class Collect extends Component {
-  componentDidMount() {
-    this.props.collect.getCollectData({ typeId: 0 })
-  }
-  render() {
-    return (
-      <div className={style.con}>
-        <header className={style.header}>
-          <p className={style.left}><NavLink to='/layer/mine'>&lt;</NavLink></p>
-          <p className={style.tit}>我的收藏哦~</p>
-          <p className={style.right}></p>
-        </header>
-        <section className={style.section}>
-          <ul className={style.ul}>
-            {
-              this.props.collect.collectList && this.props.collect.collectList.map((item, i) => {
-                return <li className={style.li} key={item.value_id}>
-                  <div className={style.imgbox}><img src={item.list_pic_url} alt="" /></div>
-                  <div className={style.info}>
-                    <p>{item.name}</p>
-                    <p className={style.brief}>{item.goods_brief}</p>
-                    <p className={style.price}>￥{item.retail_price}</p>
-                  </div>
-                </li>
-              })
-            }
-
-
-          </ul>
-        </section>
-      </div>
-    )
-  }
+    deteleBtn(id){
+      this.props.collect.DeleteData({valueId:id,typeId:0})
+      // console.log(id)
+    }
 }
 
-
-export default Collect
+export default collect

@@ -57,6 +57,24 @@ export function searchList(params) {
   return request.get('/goods/list', {params});
 }
 
+//
+
+//删除商品查询的历史记录
+export function clearHistory(params) {
+  return request.get('/search/clearhistory', {params});
+}
+
+//添加到购物车
+export function addCart(params) {
+  return request.post('/cart/add', params);
+}
+
+//获取用户购物车商品数量
+export function goodsCount(params) {
+  return request.get('/cart/goodscount', {params});
+}
+
+
 
 
 

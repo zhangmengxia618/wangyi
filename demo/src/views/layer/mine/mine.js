@@ -2,17 +2,17 @@ import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 import { NavLink } from 'react-router-dom'
 import style from './mine.module.scss'
-
+import {removeCookie } from "../../../utils/index";
 
 export class Mine extends Component {
     render() {
         return (
             <div className={style.con}>
                 <header className={style.head}>
-                    <div className={style.avator}><img src="" alt=""/></div>
+                    <div className={style.avator}><img src="http://a2.qpic.cn/psb?/V12T2KCG3NWse3/IEhLXLg5sggGRx2G0B5bmyjgCInO3ZATmtevVPS27x8!/c/dCEBAAAAAAAA&ek=1&kp=1&pt=0&bo=OASgBTgEoAURECc!&t=5&tl=3&vuin=1429547950&tm=1564578000&sce=60-2-2&rf=0-0" alt=""/></div>
                     <div className={style.info}>
                         <p>1532432423</p>
-                        <p>普通用户</p>
+                        <p>VIP用户</p>
                     </div>
                 </header>
                 <ul className={style.ul}>
@@ -37,9 +37,14 @@ export class Mine extends Component {
                     <li>客服咨询</li>
                     <li>账户安全</li>
                 </ul>
-                <div className={style.exit}>退出登录</div>
+                <div className={style.exit} onClick={()=>{this.deteleLogin()}}>退出登录</div>
             </div>
         )
+    }
+
+    deteleLogin(){
+        removeCookie()
+        this.props.history.push('/login')
     }
 }
 

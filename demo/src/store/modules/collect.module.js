@@ -1,14 +1,29 @@
 import { observable, action } from "mobx";
-import { collectList} from '@/services/collect'
+import { collectList, addorDelete } from '@/services/collect'
 
 export default class Collect {
-  @observable collectList = [];
+  @observable collectData = [];
+  @observable deteleData = '';
 
 
   //收藏页数据
-  @action getCollectData = async (params) => {
-    const data = await collectList(params)
-    this.collectList = data.data
-    console.log(data)
+  @action getCollectData(params) {
+    console.log(params)
+    collectList(params).then(res => {
+      this.collectData = res.data
+    })
   }
+
+   //收藏页数据
+   @action DeleteData(params) {
+    console.log(params)
+    addorDelete(params).then(res => {
+      alert(res.data.type)
+      this.getCollectData()
+      // this.collectData = res.data
+    })
+  }
+
+
+
 }

@@ -1,8 +1,10 @@
 import React from 'react';
-import Loadable from "react-loadable"
+import Loadable from "react-loadable";
+import { Toast } from 'antd-mobile';
+
 function Loading() {
     return <div>
-        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561611110937&di=f293a0b5d0dce485b50a03f0439cf6f8&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Ffbe4ef9f8e6fd3f723f5d33559af795bb370868712aca-z8IkyD_fw658" alt="" />
+          { Toast.loading('Loading...', 1)}
     </div>
 }
 
@@ -90,7 +92,7 @@ const Search = Loadable({
 let router = [
     {
         path: '/',
-        redirect: '/layer/home'
+        redirect: '/login'
     },
     {
         path: "/layer",

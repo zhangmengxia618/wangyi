@@ -5,6 +5,7 @@ import Special from './modules/special.modules'
 import Classify from "./modules/classify.modules"
 import Collect from './modules/collect.module'
 import Address from './modules/address.module'
+import ShoppingCart from "./modules/shoppingCart.module"
 // 实例化模块
 //登录
 const login = new Login();
@@ -12,11 +13,13 @@ const login = new Login();
 const home = new Home();
 //专题
 const special = new Special();
-
+//收藏
 const collect = new Collect()
-
+//分类
 const classify = new Classify();
 const address=new Address()
+//购物车
+const shoppingCart=new ShoppingCart()
 //登录
 export default{
     home,
@@ -26,5 +29,9 @@ export default{
     //分类
     classify,
     collect,
-    address
+    address,
+   
+ 
+    //购物车
+    shoppingCart
 };

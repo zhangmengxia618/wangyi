@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { inject, observer } from "mobx-react";
 import { BrowserRouter as Router, NavLink } from "react-router-dom";
 import { Icon, Drawer } from "antd"
-
+import 'antd-mobile/dist/antd-mobile.css';
 import ReactSwipe from 'react-swipe';
 import style from "./shopDetail.module.scss"
 import ClassDetailList from "../../../component/classDetailList/classDetailList"
@@ -10,12 +10,11 @@ import CommentList from "../../../component/commentList/index"
 @inject('classify')
 @observer
 class ShopDetail extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             storeData: [],
-            visible: false,
-            flag:false
+            visible:false,
         };
 
         this.swiperContainer = React.createRef();
@@ -33,7 +32,9 @@ class ShopDetail extends Component {
         //弹框出现的头像
         let img = info && info.primary_pic_url;
         let num = shoppingData && shoppingData.productList;
-        console.log()
+        //商品id
+        let paramsId=this.props.match.params.id;
+        console.log(paramsId)
         return (
             <div className={style.shopDetalBox}>
                 {/* 头部· */}
@@ -82,7 +83,7 @@ class ShopDetail extends Component {
                             comment && comment.pic_list ? <div>
                                 <ul>
                                     <li>评论{(shoppingData.comment && shoppingData.comment.count)}</li>
-                                    <li onClick={() => this.props.history.push(`/listDetail/${this.props.match.params.id}`)}>查看全部 ></li>
+                                    <li onClick={() => this.props.history.push(`/listDetail/${this.props.match.params.id}`)} className={style.all}>查看全部 ></li>
                                 </ul>
 
                                 <dl>
@@ -146,10 +147,11 @@ class ShopDetail extends Component {
 
                 </div>
                 {/* 下 */}
+                {console.log(this.props)}
                 <div className={style.footer}>
-                   
-                        <span onClick={()=>{this.collect(this.props.match.params.id)}}  className={this.state.flag?style.collect:''}><Icon type="star"  /></span>
-                        <span><Icon type="shopping-cart" />{this.props.classify.count}</span>
+                    {console.log(this.props.classify.addorShow)}
+                        <span onClick={()=>{this.collect(this.props.match.params.id)}}  className={this.props.classify.userHasCollect===1?style.collect:''}><Icon type="star"  /></span>
+                        <span onClick={()=>this.props.history.push('/layer/shoppingCart')}><Icon type="shopping-cart" />{this.props.classify.careOKValue}</span>
                         <div className={style.btn}>
                             <button style={{ background: "orangered" }} onClick={() => this.goodsMask()}>加入购物车</button>
                             <button style={{ background: "skyblue" }}>立即购买</button>
@@ -162,6 +164,7 @@ class ShopDetail extends Component {
                     onClose={this.onClose}
                     visible={this.state.visible}
                 >     
+                 
                         <div className={style['goodscart_list']}>
                             <dl>
                                 <dt>
@@ -181,8 +184,9 @@ class ShopDetail extends Component {
                                     <span onClick={()=>{this.props.classify.changeCount('+')}}>+</span>
                                 </div>
                             </div>
+                           
                             <div className={style['goodsBtn']}>
-                                <button style={{ background: "orangered" }}>加入购物车</button>
+                                <button style={{ background: "orangered" }} onClick={()=>this.addCart(num&&num[0].id)}>加入购物车</button>
                                 <button style={{ background: "skyblue" }}>立即下单</button>
                             </div>
                         </div>
@@ -193,7 +197,10 @@ class ShopDetail extends Component {
     componentDidMount() {
         this.props.classify.shopList(this.props.match.params.id)
         this.props.classify.related(this.props.match.params.id)
+        this.props.classify.goodsCountD()
+        this.props.classify.getCollectData()
     }
+    
 
     goodsMask() {
         this.setState({
@@ -213,15 +220,22 @@ class ShopDetail extends Component {
     }
 
     collect(id){
-        this.props.classify.addorD(id)
-        this.setState({
-            flag:!this.props.classify.addorShow
-        })
-        if(this.state.flag===false){
-            console.log(123135465456)
-        }
+        this.props.classify.addorD(id,0)
+        // this.setState({
+        //     flag:!this.props.classify.addorShow
+        // })
+        // if(this.state.flag===false){
+        //     console.log(123135465456)
+        // }
     }
 
+    
+    addCart(numId){
+        this.props.classify.addCartD({goodsId:this.props.match.params.id,number:this.props.classify.count,productId:numId})
+        this.props.classify.goodsCountD()
+    }
+
+    
 }
 
 export default ShopDetail

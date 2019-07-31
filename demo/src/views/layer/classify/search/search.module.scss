@@ -31,6 +31,9 @@
         flex: 1;
         overflow: hidden;
     }
+    .show{
+        display: block;
+    }
     .contenD{
         width: 100%;
         overflow: scroll;
@@ -72,6 +75,12 @@
             height: 0.35rem;
             text-align: center;
         }
+        .topActive{
+            color: red;
+        }
+        .moeyIcon{
+            color:red;
+        }
     }
     .history,.hot{
         width: 100%;
@@ -79,7 +88,12 @@
         margin-bottom: 0.1rem;
         padding: 0.05rem;
         h3{
+            display: flex;
             font-size: 0.16rem;
+            justify-content: space-between;
+            span{
+                padding: 0 0.1rem;
+            }
         }
         .historyCen,.hotCen{
             width: 100%;

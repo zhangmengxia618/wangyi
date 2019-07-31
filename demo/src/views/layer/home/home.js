@@ -68,11 +68,16 @@ class Home extends Component {
                         <ul className={style.newGoodsUl}>
                             {
                                 this.props.home.data.newGoodsList && this.props.home.data.newGoodsList.map((item, i) => {
-                                    return <li className={style.newGoodsli} key={item.id}>
-                                        <img className={style.newGoodsimg} src={item.list_pic_url} alt={item.name} />
-                                        <p className={style.newGoodsname}>{item.name}</p>
-                                        <p className={style.newGoodsprice}>￥{item.retail_price}</p>
-                                    </li>
+                                    return  <li className={style.newGoodsli} key={item.id}>
+                                                <NavLink to={`/shoppingDetail/${item.id}`}>
+                                                    <img className={style.newGoodsimg} src={item.list_pic_url} alt={item.name} />
+                                                    <p className={style.newGoodsname}>{item.name}</p>
+                                                    <p className={style.newGoodsprice}>￥{item.retail_price}</p>
+                                                </NavLink>
+                                         </li>
+                                  
+                                        
+                                   
                                 })
                             }
                         </ul>
@@ -84,11 +89,14 @@ class Home extends Component {
                                 this.props.home.data.hotGoodsList && this.props.home.data.hotGoodsList.map((item, i) => {
                                     return < li className={style.hotGoodsli} key={item.id}>
                                         <img src={item.list_pic_url} alt={item.name} />
-                                        <div className={style.hotGoodsdetail}>
+                                        <NavLink to={`/shoppingDetail/${item.id}`}>
+                                            <div className={style.hotGoodsdetail}>
                                             <p className={style.hotGoodsname}>{item.name}</p>
                                             <p className={style.hotGoodsbrief}>{item.goods_brief}</p>
                                             <p className={style.hotGoodsprice}>￥{item.retail_price}</p>
                                         </div>
+                                        </NavLink>
+                                        
                                     </li>
                                 })
 
@@ -118,9 +126,12 @@ class Home extends Component {
                                         {
                                             item.goodsList.map((item, i) => {
                                                 return <li className={style.categoryli} key={item.id}>
-                                                    <img src={item.list_pic_url} alt={item.name} />
-                                                    <p className={style.categoryname}>{item.name}</p>
-                                                    <p className={style.categoryprice}>￥{item.retail_price}</p>
+                                                     <NavLink to={`/shoppingDetail/${item.id}`}>
+                                                        <img src={item.list_pic_url} alt={item.name} />
+                                                        <p className={style.categoryname}>{item.name}</p>
+                                                        <p className={style.categoryprice}>￥{item.retail_price}</p>
+                                                     </NavLink>
+                                                
                                                 </li>
                                             })
                                         }
