@@ -7,14 +7,13 @@ import ClassDetailList from "../../../component/classDetailList/classDetailList"
 @observer
 class ClassDetail extends Component {
     state = {
-        flag: 0
+        flag:this.props.match.params.id*1
     }
     render() {
 
         let brotherCategory = this.props.classify.brotherCategory.brotherCategory
         let currentCategory = this.props.classify.brotherCategory.currentCategory
         let brotherList = this.props.classify.brotherList;
-        console.log(this.props.match.params.id)
         return (
             <div className={style.classifyBox}>
                 <div className={style.headerBox}>
@@ -28,7 +27,7 @@ class ClassDetail extends Component {
                     <ul>
                         {
                             brotherCategory && brotherCategory.map((item, index) => {
-                                return <li key={index + "i"} onClick={() => { this.classiftBtn(item.id, index) }} className={this.state.flag === index ? style.detailActive : ''}>{item.name}</li>
+                                return <li key={index + "i"} onClick={() => { this.classiftBtn(item.id, index) }} className={this.state.flag===item.id ? style.detailActive : ''}>{item.name}</li>
                             })
                         }
                     </ul>
@@ -51,8 +50,9 @@ class ClassDetail extends Component {
     }
     classiftBtn(id, index) {
         this.props.classify.ClickList(id)
+        this.props.classify.NavData(id)
         this.setState({
-            flag: index
+            flag: id
         })
     }
 }

@@ -1,5 +1,8 @@
 import { observable, action } from "mobx";
-import {classCurrent,catalogCurrent,categoryData,categoryList,shoppDetail,shoppRelated,commentList,addorDelete,searchIndex,searchHelper,searchList} from "../../services"
+import {
+    classCurrent,catalogCurrent,categoryData,categoryList,shoppDetail,
+    shoppRelated,commentList,addorDelete,searchIndex,searchHelper,searchList,clearHistory,addCart,goodsCount
+} from "../../services"
 export default class Classify{
     // 左侧数据
     @observable categoryList = [];
@@ -37,7 +40,10 @@ export default class Classify{
 
      //input 模糊搜索相对应列表
      @observable searchListData =[];
-    
+    // 添加成功返回值
+    @observable careValue =-1;
+     //input 添加成功后的值
+     @observable careOKValue ='';
     
     //渲染初始数据
     @action ClassifyData(){
@@ -103,11 +109,9 @@ export default class Classify{
             this.addorShow=res.data.type==="add"?true:false;
         })
     }
-
        //模糊搜索初始渲染
     @action searchIndexData(){
         searchIndex().then(res=>{
-            console.log(res)
             this.hotKeywordList=res.data.hotKeywordList;
             this.historyKeywordList=res.data.historyKeywordList;
             this.defaultKeyword=res.data.defaultKeyword;
@@ -125,13 +129,35 @@ export default class Classify{
     //模糊搜索相对应列表
     @action searchListD(value){
         console.log(value)
-        // this.Keyword=value;
-        searchList({keyword:value}).then(res=>{
-            console.log(res.data.data)
+        searchList(value).then(res=>{
             this.searchListData=res.data.data;
         })
     }
-    // 
+    //删除商品查询的历史记录
+    @action clearHistoryD(){
+        clearHistory().then(res=>{
+            console.log(res)
+            // this.searchListData=res.data;
+        })
+    }
+
+    //添加到购物车
+    @action addCartD(value){
+        console.log(value)
+        addCart(value).then(res=>{
+            console.log(res)
+            this.careValue=res.errno;
+        })
+    }
+
+      //获取用户购物车商品数量
+      @action goodsCountD(){
+        goodsCount().then(res=>{
+            this.careOKValue=res.data.cartTotal.goodsCount;
+        })
+    }
+
+    
 
     
 }
