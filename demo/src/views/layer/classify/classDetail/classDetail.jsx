@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { inject, observer } from "mobx-react";
-import { BrowserRouter as Router, NavLink } from "react-router-dom"
+import {NavLink } from "react-router-dom"
 import style from "./classDetail.module.scss"
 import ClassDetailList from "../../../component/classDetailList/classDetailList"
+
+
 @inject('classify')
 @observer
 class ClassDetail extends Component {
@@ -10,10 +12,10 @@ class ClassDetail extends Component {
         flag:this.props.match.params.id*1
     }
     render() {
-
         let brotherCategory = this.props.classify.brotherCategory.brotherCategory
         let currentCategory = this.props.classify.brotherCategory.currentCategory
         let brotherList = this.props.classify.brotherList;
+
         return (
             <div className={style.classifyBox}>
                 <div className={style.headerBox}>

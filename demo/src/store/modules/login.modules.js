@@ -1,6 +1,6 @@
 import { observable, action } from "mobx";
 import {logins} from "../../services"
-import { setCookie, getCookie } from "../../utils/index";
+import { setCookie } from "../../utils/index";
 export default class Login{
     // @observable 修饰属性
     @observable name = "";
@@ -18,11 +18,8 @@ export default class Login{
     }
     @action changeBtn(mobile,password){
         let obj={mobile,password}
-        console.log(obj)
        logins(obj).then(res=>{
-        console.log(res)
         if(res.errno===0){
-            console.log(res.data.sessionKey)
             setCookie(res.data.sessionKey)
             this.data=res.errno
         }else{
@@ -30,6 +27,5 @@ export default class Login{
         }
            this.btnLogin=res.data
        })
-        // this.paw=type;
     }
 }

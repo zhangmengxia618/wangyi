@@ -1,7 +1,6 @@
 import React, { Component,Fragment} from 'react'
 import {inject,observer} from "mobx-react"
 import CommentList from "../../../component/commentList/index"
-import { BrowserRouter as Router, Route,Redirect,Switch,NavLink,withRouter} from "react-router-dom"
 import style from "./specialDetail.module.scss"
 @inject('special')
 @observer
@@ -14,7 +13,6 @@ class SpecialList extends Component {
     render() {
         let id=this.props.match.params.id;
         let commentList=this.props.special.specialListData&&this.props.special.specialListData;
-        console.log(commentList)
         return (
             <Fragment>
                 <div className={style.headerBox}>

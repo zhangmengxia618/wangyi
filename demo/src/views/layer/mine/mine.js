@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { inject, observer } from 'mobx-react'
 import { NavLink } from 'react-router-dom'
 import style from './mine.module.scss'
 import {removeCookie } from "../../../utils/index";

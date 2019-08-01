@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import { inject, observer } from "mobx-react";
-import { BrowserRouter as Router, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { Icon, Drawer } from "antd"
 import 'antd-mobile/dist/antd-mobile.css';
 import ReactSwipe from 'react-swipe';
 import style from "./shopDetail.module.scss"
-import ClassDetailList from "../../../component/classDetailList/classDetailList"
-import CommentList from "../../../component/commentList/index"
+import ClassDetailList from "../../../component/classDetailList/classDetailList";
+// 引入 lazyimg
+import  { withLazyimg } from 'react-lazyimg-component';
+// 引入 volecity.js
+import 'velocity-animate';
+import 'velocity-animate/velocity.ui';
 @inject('classify')
 @observer
 class ShopDetail extends Component {
@@ -16,7 +20,6 @@ class ShopDetail extends Component {
             storeData: [],
             visible:false,
         };
-
         this.swiperContainer = React.createRef();
     }
     render() {
@@ -32,9 +35,13 @@ class ShopDetail extends Component {
         //弹框出现的头像
         let img = info && info.primary_pic_url;
         let num = shoppingData && shoppingData.productList;
-        //商品id
-        let paramsId=this.props.match.params.id;
-        console.log(paramsId)
+        const config = {
+            placeholder: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1564625027&di=57a3d087b1f5ae7340722751e915abd7&src=http://hbimg.b0.upaiyun.com/2803b55a526758deaeb9409eb36207df3126376c660c-TwELia_fw658',
+            js_effect: 'transition.shrinkIn', // 支持 velocity.js 动画效果
+            appear: null, // 元素出现在可视窗口时触发appear钩子函数
+            threshold: 1000, // 指定触发阈值
+        };
+        const Lazy = withLazyimg(config);
         return (
             <div className={style.shopDetalBox}>
                 {/* 头部· */}
@@ -52,7 +59,12 @@ class ShopDetail extends Component {
                                 shoppingData.gallery && shoppingData.gallery.map((item, index) => {
                                     return (
 
-                                        <div key={index + "img"} className={style['img-box']}><img src={item.img_url} alt="" /></div>
+                                        <div key={index + "img"} className={style['img-box']}>
+                                            <Lazy
+                                                className={style.lazy}
+                                                src={item.img_url}
+                                                />
+                                        </div>
                                     )
                                 })
                             }
@@ -96,7 +108,11 @@ class ShopDetail extends Component {
                                         <h3>
                                             {
                                                 comment && comment.pic_list === undefined ? null : comment && comment.pic_list.map((item, index) => {
-                                                    return <img src={item.pic_url} key={index + "im"} alt="" />
+                                                    return <Lazy
+                                                                className={style.lazy}
+                                                                src={item.pic_url}
+                                                                />
+                                                    // <img src={item.pic_url} key={index + "im"} alt="" />
                                                 })
                                             }
                                         </h3>
@@ -147,9 +163,7 @@ class ShopDetail extends Component {
 
                 </div>
                 {/* 下 */}
-                {console.log(this.props)}
                 <div className={style.footer}>
-                    {console.log(this.props.classify.addorShow)}
                         <span onClick={()=>{this.collect(this.props.match.params.id)}}  className={this.props.classify.userHasCollect===1?style.collect:''}><Icon type="star"  /></span>
                         <span onClick={()=>this.props.history.push('/layer/shoppingCart')}><Icon type="shopping-cart" />{this.props.classify.careOKValue}</span>
                         <div className={style.btn}>
@@ -168,7 +182,11 @@ class ShopDetail extends Component {
                         <div className={style['goodscart_list']}>
                             <dl>
                                 <dt>
-                                    <img src={img} alt=""></img>
+                                    <Lazy
+                                        className={style.lazy}
+                                        src={img}
+                                        />
+                                    {/* <img src={img} alt=""></img> */}
                                 </dt>
                                 <dd>
                                     <div>单价：<span>￥{num && num[0].retail_price}</span></div>
@@ -213,7 +231,7 @@ class ShopDetail extends Component {
         });
     };
     btn(jian,count){
-        if(count==0){
+        if(count===0){
              return 
         }
         this.props.classify.changeCount(jian)
@@ -221,12 +239,6 @@ class ShopDetail extends Component {
 
     collect(id){
         this.props.classify.addorD(id,0)
-        // this.setState({
-        //     flag:!this.props.classify.addorShow
-        // })
-        // if(this.state.flag===false){
-        //     console.log(123135465456)
-        // }
     }
 
     

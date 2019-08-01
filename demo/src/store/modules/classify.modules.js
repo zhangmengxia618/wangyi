@@ -54,7 +54,6 @@ export default class Classify{
     //渲染初始数据
     @action ClassifyData(){
         classCurrent().then(res=>{
-            console.log(res.data)
             this.categoryList=res.data.categoryList;
             this.currentCategory=res.data.currentCategory;
         })
@@ -62,9 +61,7 @@ export default class Classify{
    //点击左侧
     @action ClickData(id){
         catalogCurrent({id:id}).then(res=>{
-            console.log(res.data)
             this.currentCategory=res.data.currentCategory
-        //    console.log(res.data.currentCategory)
         })
     }
 
@@ -84,7 +81,6 @@ export default class Classify{
     //获取商品详情
     @action shopList(id){
         shoppDetail({id:id}).then(res=>{
-            console.log(res.data.userHasCollect)
             this.userHasCollect=res.data.userHasCollect;
             this.shoppingData=res.data;
         })
@@ -92,16 +88,13 @@ export default class Classify{
 
     //相关商品
     @action related(id){
-        console.log(id)
         shoppRelated({id:id}).then(res=>{
-            console.log(res.data)
             this.shoppRelatedData=res.data.goodsList;
         })
     }
 
      //相关商品评论详情
      @action commentL(id){
-        console.log(id)
         commentList({valueId:id,typeId:0}).then(res=>{
             this.commentListData=res.data.data;
         })
@@ -121,7 +114,6 @@ export default class Classify{
 
       //收藏页数据
     @action getCollectData(params) {
-        console.log(params)
         collectList(params).then(res => {
         this.collectData = res.data
         })
@@ -145,7 +137,6 @@ export default class Classify{
     
     //模糊搜索相对应列表
     @action searchListD(value){
-        console.log(value)
         searchList(value).then(res=>{
             this.searchListData=res.data.data;
         })
@@ -153,16 +144,13 @@ export default class Classify{
     //删除商品查询的历史记录
     @action clearHistoryD(){
         clearHistory().then(res=>{
-            console.log(res)
             // this.searchListData=res.data;
         })
     }
 
     //添加到购物车
     @action addCartD(value){
-        console.log(value)
         addCart(value).then(res=>{
-            console.log(res)
             this.careValue=res.errno;
         })
     }

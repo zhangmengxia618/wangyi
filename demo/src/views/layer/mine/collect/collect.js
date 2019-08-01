@@ -11,7 +11,6 @@ class collect extends Component {
     }
     render() {
         let list =this.props.collect.collectData;
-        console.log(list);
         return (
             <div className={style.collect}>
                 <div className={style.header}>
@@ -53,7 +52,7 @@ class collect extends Component {
 
     deteleBtn(id){
       this.props.collect.DeleteData({valueId:id,typeId:0})
-      // console.log(id)
+      this.props.collect.getCollectData({typeId:0})
     }
 }
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import style from './address.module.scss';
 import { inject, observer } from 'mobx-react'
-import { NavLink } from 'react-router-dom'
 import { List, InputItem, Picker } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import addressList from './addressdata'
@@ -33,7 +32,6 @@ class Address extends Component {
       city_id: this.state.addarr[1],
       district_id: this.state.addarr[2],
     })
-    console.log(this.props.history);
     this.setState({
       flag:false
     })
@@ -43,15 +41,19 @@ class Address extends Component {
     this.props.address.delAddress({id:id})
     this.props.address.getAddress()
   }
+  goBack(){
+    this.props.history.push('/layer/mine')
+  }
   componentDidMount() {
     this.props.address.getAddress()
   }
+
   render() {
     const { getFieldProps } = this.props.form;
     return (
       this.state.flag === false ? <div className={style.con}>
         <header className={style.header}>
-          <p className={style.left}>&lt;</p>
+          <p className={style.left} onClick={()=>{this.goBack()}}>&lt;</p>
           <p className={style.tit}>地址管理</p>
           <p className={style.right}></p>
         </header>

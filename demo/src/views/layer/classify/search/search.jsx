@@ -3,7 +3,7 @@ import style from "./search.module.scss"
 import {Icon} from "antd";
 import {inject,observer} from "mobx-react";
 import ClassDetailList from "../../../component/classDetailList/classDetailList"
-import { BrowserRouter as Router, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 @inject('classify')
 @observer
 class Search extends Component {
@@ -26,10 +26,6 @@ class Search extends Component {
         let KeywordData=this.props.classify.KeywordData;
        //模糊搜索相对应列表
         let searchListData=this.props.classify.searchListData;
-        // //全部 居家
-        // // console.log(this.props.classify.searchListData)
-        // let filterCategory=this.props.classify.searchListData.filterCategory;
-        // console.log(filterCategory)
         return (
             <div className={style.searchBox}>
                 <header className={style['header']}>

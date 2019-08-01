@@ -10,7 +10,6 @@ export default class Address {
   //渲染初始数据
   @action getAddress() {
     getuseraddress().then(res => {
-      console.log(res.data)
       this.addressList = res.data;
     })
   }
@@ -19,14 +18,11 @@ export default class Address {
   @action saveAddress = async (params) => {
     const data = await saveaddress(params)
     
-    console.log(data)
   }
 
   //收藏页数据
   @action delAddress = async (params) => {
     const data = await deleteaddress(params)
-
-    console.log(data)
   }
 
 
