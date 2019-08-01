@@ -28,6 +28,8 @@ class Home extends Component {
             js_effect: 'transition.shrinkIn', // 支持 velocity.js 动画效果
             appear: null, // 元素出现在可视窗口时触发appear钩子函数
             threshold: 1000, // 指定触发阈值
+            event: 'scroll',
+            threshold: 100, // 指定距离底部多少距离时触发加载
         };
         const Lazy = withLazyimg(config);
         return (
