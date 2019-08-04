@@ -46,7 +46,6 @@ class Home extends Component {
                         }
                     </ul>
                     <div className={style.brand}>
-
                         <h2 className={style.h2}>品牌制造商直供</h2>
                         <ul className={style.brandUl}>
                             {

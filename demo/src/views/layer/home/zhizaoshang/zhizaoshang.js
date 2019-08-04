@@ -35,7 +35,7 @@ class Zhizaoshang extends Component {
               {
                 this.props.home.branddata.goodsList && this.props.home.branddata.goodsList.map((item, i) => {
                   return <li key={item.id} className={style.li}>
-                    <NavLink to='/'>
+                    <NavLink to={`/shoppingDetail/${item.id}`}>
                       {/* to={`/Qiquclassify/${item.id}`} */}
                       <img src={item.list_pic_url} alt={item.name} />
                       <p>{item.name}</p>

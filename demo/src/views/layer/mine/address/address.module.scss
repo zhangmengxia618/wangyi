@@ -137,12 +137,24 @@
   background: #fff;
 }
 
-.pick{
+.pick {
   flex-basis: 1 !important;
 }
 
+.defaultimg {
+  width: 0.2rem;
+  height: 0.2rem;
+}
 
-.defaultimg{
-  width: .2rem;
-  height: .2rem;
+.am-list-extra {
+  flex-basis: 100%;
+}
+.am-list-body {
+  width: 100%;
+  .am-list-extra {
+    text-align: center;
+  }
+}
+.am-list {
+  border-bottom: 1px solid #ccc;
 }

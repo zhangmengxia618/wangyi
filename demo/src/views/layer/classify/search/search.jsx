@@ -84,11 +84,7 @@ class Search extends Component {
                                       KeywordData&&KeywordData.map((item,index)=><p className={style.result} key={index+"mo"}>{item}</p>)
                                  }
                                  
-                                  
-                                  
                              </Fragment>:null
-                             
-                            
                           }
                       
                     </Fragment>:

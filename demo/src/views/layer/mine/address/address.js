@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import style from './address.module.scss';
 import { inject, observer } from 'mobx-react'
-import { NavLink } from 'react-router-dom'
-import { List, InputItem, Picker } from 'antd-mobile';
+// import { NavLink } from 'react-router-dom'
+import { List, InputItem, Picker, Toast } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import addressList from './addressdata'
 
@@ -23,35 +23,50 @@ class Address extends Component {
     this.save = this.save.bind(this)
     this.deladdress = this.deladdress.bind(this)
   }
-  save() {
-    this.props.address.saveAddress({
-      name: this.state.name,
-      address: this.state.add,
-      mobile: this.state.phone,
-      is_default: this.state.isdefault,
-      province_id: this.state.addarr[0],
-      city_id: this.state.addarr[1],
-      district_id: this.state.addarr[2],
-    })
-    console.log(this.props.history);
-    this.setState({
-      flag:false
-    })
+  save=()=> {
+    if (this.state.name === '' || this.state.phone === '' || this.state.add === '' || this.state.addarr === []) {
+      Toast.fail('请填写完整', 1);
+      return;
+    } else {
+      this.props.address.saveAddress({
+        name: this.state.name,
+        address: this.state.add,
+        mobile: this.state.phone,
+        is_default: this.state.isdefault,
+        province_id: this.state.addarr[0],
+        city_id: this.state.addarr[1],
+        district_id: this.state.addarr[2],
+      })
+      // console.log(this.props.history);
+      this.setState({
+        flag: false
+      })
+      // this.props.address.getAddress();
+    }
+
+  }
+  deladdress=(id)=> {
+    this.props.address.delAddress({ id: id })
+    // console.log(this.props.address.delres && this.props.address.delres.errno)
+    // if (this.props.address.delres&&this.props.address.delres.errno) {
+    //     console.log('删除')
+    // }
+    // this.props.address.getAddress();
+
+  }
+  componentDidMount=()=> {
     this.props.address.getAddress()
   }
-  deladdress(id){
-    this.props.address.delAddress({id:id})
-    this.props.address.getAddress()
-  }
-  componentDidMount() {
-    this.props.address.getAddress()
-  }
+  componentWillUnmount = () => {
+    Toast.hide()
+  };
+  
   render() {
     const { getFieldProps } = this.props.form;
     return (
       this.state.flag === false ? <div className={style.con}>
         <header className={style.header}>
-          <p className={style.left}>&lt;</p>
+          <p className={style.left} onClick={() => { this.props.history.push('/layer/mine') }}>&lt;</p>
           <p className={style.tit}>地址管理</p>
           <p className={style.right}></p>
         </header>
@@ -67,7 +82,7 @@ class Address extends Component {
                     <p className={style.region}>{item.full_region}</p>
                     <p className={style.address}>{item.address}</p>
                   </div>
-                  <div className={style.del} onClick={()=>this.deladdress(item.id)}>删除</div>
+                  <div className={style.del} onClick={() => this.deladdress(item.id)}>删除</div>
                 </li>
               })
             }

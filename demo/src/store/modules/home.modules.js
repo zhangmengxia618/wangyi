@@ -4,7 +4,7 @@ import { home, zhizaoshang, branddata } from '@/services/index'
 
 
 export default class Home {
-  //  @observable 修饰属性
+  //  @ 修饰属性
   @observable data = {};//主页的数据
   @observable zhizaodata = {};
   @observable branddata = {};
