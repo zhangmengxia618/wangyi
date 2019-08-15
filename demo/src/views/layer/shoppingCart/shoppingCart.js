@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { inject, observer } from 'mobx-react'
 import style from './shopping.module.scss'
-import Compile from "./compile/compile"
+import { NavLink } from "react-router-dom"
 @inject('shoppingCart')
 @observer
 class ShoppingCart extends Component {
@@ -13,9 +13,9 @@ class ShoppingCart extends Component {
         let cartData = this.props.shoppingCart.cartData;
         let cartV = this.props.shoppingCart.cartV;
         let { isEdit } = this.state;
-        const hasEdit = cartData.filter((item) => {
-            return item.isHasEdit
-        })
+        // const hasEdit = cartData.filter((item) => {
+        //     return item.isHasEdit
+        // })
         return (
             <div className={style.con}>
                 <header className={style.header}>
@@ -30,14 +30,14 @@ class ShoppingCart extends Component {
                                 return (
                                     <li className={style.li} key={index + "shop"}>
                                         <div className={style.checkbox}>
-                                            {}
                                             {!isEdit ?
-                                                <input type="checkbox" checked={this.props.shoppingCart.FinishIsChecked} onClick={() => { this.changeChecked(item) }} /> :
-                                                <input type="checkbox" checked={this.props.shoppingCart.careEnit} onClick={() => { this.props.shoppingCart.changeEditItemChecked(item) }} />}
+                                                <input type="checkbox" checked={this.props.shoppingCart.FinishIsChecked} onClick={() => {this.changeChecked(item)}} /> :
+                                                <input type="checkbox" checked={this.props.shoppingCart.careEnit} onClick={() => {this.props.shoppingCart.changeEditItemChecked(item)}} />
+                                                }
                                         </div>
-                                        <a href={`/shoppingDetail/${item.goods_id}`}>
+                                        <NavLink to={`/shoppingDetail/${item.goods_id}`}>
                                             <div className={style.imgbox}>< img src={item.list_pic_url} alt="" /></div>
-                                        </a>
+                                        </NavLink>
                                         {
                                             !isEdit ? (<Fragment>
                                                 <div className={style.goodsinfo}>
@@ -86,7 +86,6 @@ class ShoppingCart extends Component {
                                     <input type="checkbox" checked={this.props.shoppingCart.FinishIsChecked} onClick={() => { this.props.shoppingCart.cartCheckedD() }} /> :
                                     <input type="checkbox" checked={this.props.shoppingCart.careEnit} onClick={() => { this.props.shoppingCart.careEnitD() }} />}
                             </div>
-                            {console.log(this.props.shoppingCart.EditCheckedCount)}
                             <div className={style.info}><span>已选({this.props.shoppingCart.EditCheckedCount})</span></div>
                             <div className={style.edit} onClick={() => { this.changeEdit(this.state.isEdit, cartData) }}>完成</div>
                             <div className={style.order} onClick={() => { this.deteleBtn(cartData) }}>删除所选</div>
@@ -102,7 +101,7 @@ class ShoppingCart extends Component {
     componentDidMount() {
         this.props.shoppingCart.searchHelper()
         this.props.shoppingCart.changeInitFinishCheckedFn()
-        this.props.shoppingCart.addCartD()
+        // this.props.shoppingCart.addCartD()
     }
     /*购物车商品编辑状态*/
     changeEdit(status, cartData) {
@@ -115,33 +114,20 @@ class ShoppingCart extends Component {
         })
     }
     //购物车加减
-    addOrDelete(item, type, cartData) {
-        const { goods_id, id, number, product_id } = item;
+    addOrDelete(item, type) {
+        const { goods_id,  product_id } = item;
         this.props.shoppingCart.addCartD({ goodsId: goods_id, number: type, productId: product_id })
     }
-    //完成页面反选
+    //完成编辑
     changeChecked(item) {
         let checked = item.checked === 0 ? 1 : 0;
         this.props.shoppingCart.cartCheckedFn(checked, item.product_id)
-        this.props.shoppingCart.FinishIsChecked = true;
+        // this.props.shoppingCart.FinishIsChecked = !this.props.shoppingCart.FinishIsChecked;
     }
 
     //点击删除
     deteleBtn(data) {
         this.props.shoppingCart.goodsCountD()
-        // if(this.props.shoppingCart.FinishIsChecked===false){
-        //     data.forEach(item=>{
-        //         console.log(item.product_id)
-        //     })
-        // }
-        // console.log(this.state.productIds)
-        // const productIds=[]
-        // data.forEach(item=>{
-        //     if(this.state.isEdit){
-        //         console.log(123)
-        //         productIds.push(item.product_id)
-        //     }
-        // })
     }
 
 

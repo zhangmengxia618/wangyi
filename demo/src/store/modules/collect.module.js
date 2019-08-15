@@ -8,7 +8,6 @@ export default class Collect {
 
   //收藏页数据
   @action getCollectData(params) {
-    console.log(params)
     collectList(params).then(res => {
       this.collectData = res.data
     })
@@ -16,10 +15,8 @@ export default class Collect {
 
    //收藏页数据
    @action DeleteData(params) {
-    console.log(params)
     addorDelete(params).then(res => {
-      alert(res.data.type)
-      this.getCollectData()
+      this.getCollectData({typeId:0})
       // this.collectData = res.data
     })
   }

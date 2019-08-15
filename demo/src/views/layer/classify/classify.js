@@ -1,6 +1,7 @@
-import React, { Component,Fragment } from 'react'
+import React, { Component } from 'react'
 import {inject,observer} from "mobx-react"
 import style from "././classify.module.scss"
+
 //右边组件
 import ClassRight from "../../component/classRight/classRight"
 @inject('classify')
@@ -15,6 +16,7 @@ class Classify extends Component {
     render() {
         let categoryList=this.props.classify.categoryList;
         let currentCategory=this.props.classify.currentCategory;
+
         return (
             <div className={style.classifyBox}>
                 <div className={style.hesederBox}>

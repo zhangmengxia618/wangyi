@@ -1,9 +1,9 @@
 import React, {Component, Fragment} from 'react'
 import './index.scss'
+import ProgressiveImage from 'react-progressive-image'
 class CommentList extends Component{
   render () {
     const { commentList} = this.props;
-    console.log(commentList)
     return (
       <Fragment>
         <div className="commentList">
@@ -19,7 +19,10 @@ class CommentList extends Component{
                     {
                       item.pic_list.map((item) => {
                         console.log(item)
-                          return <img src={item.pic_url} key={item.id} alt={item.id}/>
+                          return <ProgressiveImage src={item.pic_url} placeholder="https://ss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/8bc5c8ca3da4043fc6c9dbfb32d5dc89_121_121.jpg">
+                          {src => <img src={src} alt="an image" />}
+                      </ProgressiveImage>
+                          // <img src={item.pic_url} key={item.id} alt={item.id}/>
                       })
                     }
                 </div>

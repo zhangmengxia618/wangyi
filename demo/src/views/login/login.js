@@ -5,7 +5,6 @@ import { inject, observer } from "mobx-react"
 @observer
 class Login extends Component {
   render() {
-    // console.log(this.props.login.data)
     if (this.props.login.data === 0) {
       this.props.history.push('/layer/home')
     }

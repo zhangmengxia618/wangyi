@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route,Redirect,Switch,NavLink,withRouter} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 import style from "./specialDetail.module.scss"
 import {inject,observer} from "mobx-react"
 @inject('special')
@@ -7,7 +7,6 @@ import {inject,observer} from "mobx-react"
 class Comment extends Component {
     render() {
         let id= this.props.match.params.id;
-        console.log(this.props.match.params.id)
         return (
             <div>
                  <div className={style.headerBox}>

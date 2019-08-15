@@ -1,5 +1,5 @@
 # wangyi
-网易
+网易严选
 # EasyMarket [易购](https://github.com/Peroluo/easyMarketApp)
 
 > ​EasyMarket 是仿网易严选 UI 设计的 H5 webApp。项目是基于 React+Redux+mobx+Axios+React-router。
